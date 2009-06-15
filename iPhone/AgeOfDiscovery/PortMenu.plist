@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Title</key>
+		<string>Guild</string>
+		<key>Actions</key>
+		<array>
+			<string>Purchase</string>
+			<string>Sell</string>
+			<string>Nation Information</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Title</key>
+		<string>Ye Olde Inn</string>
+		<key>Actions</key>
+		<array>
+			<string>Crew</string>
+			<string>Find Mates</string>
+			<string>Quit Mates</string>
+			<string>Gossip</string>
+			<string>Tip</string>
+			<string>Gamble</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Title</key>
+		<string>Marketplace</string>
+		<key>Actions</key>
+		<array>
+			<string>Sell</string>
+			<string>Buy</string>
+			<string>View Market</string>
+			<string>Invest</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Title</key>
+		<string>Palace</string>
+		<key>Actions</key>
+		<array>
+			<string>Meet King</string>
+			<string>Secret Call</string>
+			<string>Request</string>
+			<string>Savings</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Title</key>
+		<string>Lodge</string>
+		<key>Actions</key>
+		<array>
+			<string>View Status</string>
+			<string>Sleep</string>
+		</array>
+	</dict>
+</array>
+</plist>
