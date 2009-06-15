@@ -1,25 +1,31 @@
-* YOUR QUEST
+# Your Quest
+
 Your ancestors once enjoyed the luxuries of nobility until disaster reduced
 them to poverty and obscurity.  To win Uncharted Waters you must gain fortune
 and fame through bold adventures, and restore your family name to honor.
 
-Earn Gold
+## Earn Gold
+
 Start off trading with nearby ports.  Discover where to buy and sell goods
 to make the best profit.
 
-Gain Fame
-To gain fame on the high seas you must...
-1. Invest in distant ports and gain allies for Portugal.
-2. Fight Spanish and Turkish fleets.
-3. Rescue people in distress.
-4. Discover mysterious ports.
+## Gain Fame
 
-Rise in Rank
+To gain fame on the high seas you must...
+
+  1. Invest in distant ports and gain allies for Portugal.
+  2. Fight Spanish and Turkish fleets.
+  3. Rescue people in distress.
+  4. Discover mysterious ports.
+
+## Rise in Rank
+
 As your reputation grows the King of Portugal may get word of your travels.
 If you can satisfy the King's requests, he will honor you with a new rank.
 Keep your eye on the Duke's title!
 
-Prepare for the Worst!
+## Prepare for the Worst!
+
 Treat your crew fairly and they will sail you safely through many adventures.
 But, as their captain you must be protected.  Your family will never be
 restored to glory if you go down with your fleet!  Stock your ships well; your
@@ -27,21 +33,16 @@ crew needs energy to maneuver you through turbulent seas.  If you're a true
 salt, you should complete your journey before 1522.
 
 
-PAGE 8: III. CALLING AT PORTS
------------------------------
-* PORT DISPLAY
-(Picture of the Port Screen showing the numbers below)
-
-* PORT SERVICES
-1. Guild- Barter for information on any nation, or buy special items.
-2. Ye Olde Inn- Recruit sailors, listen to gossip or play a game of cards.
-3. Marketplace- Buy and sell goods.
-4. Palace- Meet with the King or seek out the Princess.
-5. Lodge- Look over information about the port or your fleet while you rest.
-6. Your Fleet at Dock.
-7. Shipyard- Purchase ships and make repairs.
-8. Harbor- Stock up your fleet, transfer cargo, or set sail.
-9. The Hero.
+# Calling at Port
+  1. Guild- Barter for information on any nation, or buy special items.
+  2. Ye Olde Inn- Recruit sailors, listen to gossip or play a game of cards.
+  3. Marketplace- Buy and sell goods.
+  4. Palace- Meet with the King or seek out the Princess.
+  5. Lodge- Look over information about the port or your fleet while you rest.
+  6. Your Fleet at Dock.
+  7. Shipyard- Purchase ships and make repairs.
+  8. Harbor- Stock up your fleet, transfer cargo, or set sail.
+  9. The Hero.
 
 
 Before you sail off, visit the port services.  You are welcome to visit any
@@ -50,13 +51,13 @@ yard and the palace.  You will need to rest at the lodge after a call to any
 of these three spots.
 
 
-1. Sailing Map
-2. Sailing Menu
-3. Wind Direction & Velocity (1-8)
-4. Current (1-3)
-5. Days at Sea
-6. Water
-7. Food
+  1. Sailing Map
+  2. Sailing Menu
+  3. Wind Direction & Velocity (1-8)
+  4. Current (1-3)
+  5. Days at Sea
+  6. Water
+  7. Food
 
 
 - Check current and wind direction to navigate the smoothest route.  Your
@@ -70,25 +71,27 @@ of these three spots.
 - Push Select to access the options menu from sea.
 
 
-Typhoons!
+## Typhoons!
+
 If caught in a typhoon, your ship may lose its rudder.  The fleet will drift
 with the tide until repairs are made.
 
-Overpowering Current!
+## Overpowering Current!
+
 Avoid strong ocean currents.  Your fleet could be trapped off a desolate shore
 with no hope of escape.  Be steady at the helm when you sail along the
 coastline!
 
-Damaged Fleet!
+## Damaged Fleet!
+
 If your fleet is damaged by heavy seas or war, debark at the nearest port and
 make repairs at the shipyard.  Otherwise, go ashore somewhere and make repairs
 from your lumber supplies.  While ashore, your crew will not eat as much as
 they do at sea.  Stock up on (NFM: Page 14 begins really here) lumber before
 you set sail again.
 
+## Provisions run out!
 
-
-Provisions run out!
 Food and water is carried to supply your entire fleet.  If one ship should
 run out of provisions it will be supplied from other ships.
 
@@ -100,25 +103,15 @@ mid-journey.
 
 Self
   * Rank - Fulfill royal requests for higher ranks
-    # Rank0
-    # Rank1
-    # Rank2
-    # Rank3
-    # Rank4
-    # Rank5
-    # Rank6
-    # Rank7
-    # Rank8
-    # Rank9
 
   * Home Port Fame - Reputation in your home port
-    # Has Maximum, but decays over time/based on last TODO
+    Has Maximum, but decays over time/based on last TODO
 
   * Gold - Deposit surplus at palace.
-    # Has Maximum, but you can partition your gold out among ports/palaces
+    Has Maximum, but you can partition your gold out among ports/palaces
 
   * Loyalty - How much trust your crew has in you
-    # 0.0f -> 1.0f
+    0.0f -> 1.0f
 
   * Battle Experience - Improves after a war.
 
@@ -130,16 +123,16 @@ Self
 
   * Characteristics - Set these values for your hero at begin of game
     * Sailing
-      # Leadership - Ability to lead the fleet
-      # Wisdom - Sense of mission
-      # Intelligence - Decision making
+      1. Leadership - Ability to lead the fleet
+      2. Wisdom - Sense of mission
+      3. Intelligence - Decision making
     * Battle
-      # Strength - Determination
-      # Courage - Bold spirit
+      1. Strength - Determination
+      2. Courage - Bold spirit
 
 
-Category       Information               Other
-  -------------- ------------------------- ----------------------
+* * *
+
   Durability     Strength of ship          Used to gauge flotation.  Depends
                                            on the type of wood used in the
                                            hull.
