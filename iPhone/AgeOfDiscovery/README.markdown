@@ -1,7 +1,7 @@
 # Your Quest
 
 Your ancestors once enjoyed the luxuries of nobility until disaster reduced
-them to poverty and obscurity.  To win Uncharted Waters you must gain fortune
+them to poverty and obscurity.  To win Age-Of-Discovery you must gain fortune
 and fame through bold adventures, and restore your family name to honor.
 
 ## Earn Gold
@@ -13,7 +13,7 @@ to make the best profit.
 
 To gain fame on the high seas you must...
 
-  1. Invest in distant ports and gain allies for Portugal.
+  1. Invest in distant ports and gain allies for your home port Portugal.
   2. Fight Spanish and Turkish fleets.
   3. Rescue people in distress.
   4. Discover mysterious ports.
