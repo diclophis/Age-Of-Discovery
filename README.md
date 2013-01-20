@@ -1,3 +1,114 @@
+# Research
+
+  # http://stackoverflow.com/questions/7976301/model-an-undirected-graph-in-rails
+  # http://tammersaleh.com/posts/acts_as_graph
+  # https://github.com/jbvillarante/acts_as_oqgraph
+  # https://github.com/stuart/acts_as_oqgraph_demo
+  # https://github.com/stuart/oqgraph_rails
+  # https://github.com/jdleesmiller/gratr
+  # https://devcenter.heroku.com/articles/neo4j
+  # http://www.slideshare.net/pablete/neo4j-for-ruby-and-rails
+  # https://github.com/andreasronge/neo4j/wiki/Neo4j%3A%3ARails-Introduction
+  # http://blog.neo4j.org/2010/02/top-10-ways-to-get-to-know-neo4j.html
+  # http://openquery.com/products/graph-engine
+  # https://github.com/tinkerpop/gremlin/wiki/Defining-a-Property-Graph
+  # https://github.com/tinkerpop/blueprints/wiki
+  # https://github.com/chippy65/Blackjack
+  # https://github.com/RubyRebbe/blackjack
+  # http://learnruby.com/examples/ruby-quiz-151.shtml
+  # http://blog.marquiswang.com/2009/01/06/ruby-blackjack/
+  # http://thinkingdigitally.com/archive/howto-use-ruby-poker/
+  # http://stackoverflow.com/questions/8292785/rails-heroku-multiplayer-game-poker
+  # https://github.com/tjarratt/RandomTextGen
+  # http://stackoverflow.com/questions/5896288/rails-3-and-graph-databases
+  # http://rubysource.com/using-a-graph-database-with-ruby-part-i-introduction/
+  # http://rubysource.com/using-a-graph-database-with-ruby-part-ii-integration/
+  # http://www.neotechnology.com/2012/07/i-know-kung-fu-or-using-neo4j-on-rails-without-jruby/
+  # http://stackoverflow.com/questions/11776481/document-oriented-or-graph-databases
+  # http://www.graph-database.org/
+  # http://carlhoerberg.github.com/blog/2012/03/29/run-jruby-on-heroku/
+  # http://stackoverflow.com/questions/2126122/jruby-gem-for-heroku
+  # http://domhackers.blogspot.com/2009/05/heroku-client-on-jruby-part-i.html
+  # https://help.ubuntu.com/community/CheckingYourUbuntuVersion
+  # http://wiki.debian.org/Ruby
+  # http://blog.jruby.org/2011/12/getting_started_with_jruby_and_java_7/
+  # https://github.com/jruby/heroku-buildpack-jruby
+  # http://cloud.dzone.com/articles/neo4j-heroku
+  # http://debian.neo4j.org/
+  # http://maxdemarzi.com/2012/01/13/neo4j-on-heroku-part-one/
+  # http://gephi.org/
+  # http://gephi.org/tag/neo4j/
+  # https://gephi.org/plugins/neo4j-graph-database-support/
+  # http://wiki.neo4j.org/content/Neoclipse_Guide
+  # http://wiki.neo4j.org/content/Visualization_options_for_graphs
+  # https://devcenter.heroku.com/articles/rails3
+  # http://maxdemarzi.com/
+  # http://maxdemarzi.com/2012/01/11/graph-visualization-and-neo4j/
+  # http://maxdemarzi.com/2012/02/13/visualizing-a-network-with-cypher/
+  # http://www.cheating.de/loes/snes/faq.snes.uncharted_waters.txt
+  # http://www.gamefaqs.com/nes/587747-uncharted-waters/faqs/45821
+  # http://maxdemarzi.com/2012/11/27/pathfinding-with-neo4j-unmanaged-extensions/#more-1591
+  # https://devcenter.heroku.com/changelog-items/192?utm_source=dlvr.it&utm_medium=twitter
+  # http://www.howtogeek.com/howto/linux/show-the-list-of-installed-packages-on-ubuntu-or-debian/
+  # sudo update-alternatives --install /usr/bin/llvm-ar llvm-ar /usr/bin/llvm-ar-3.0 50
+  # http://www.cyberciti.biz/howto/question/linux/dpkg-cheat-sheet.php
+
+Explorer/Hero
+  has fame
+  has gold
+  has Allies
+  has HomePort
+  has EnemyPorts
+  has ReputationWithHomePort
+  has Title
+  has Rank
+  has Crew
+    Loyalty
+  has Ships/Fleet
+  has Experience
+    Battle
+    Sailing
+
+Port
+  a Port is a node on a un-directed graph of the World
+  has a Marketplace
+    Food
+    Water
+    Commodities
+      any marketable item produced to satisfy wants or needs
+
+  has a Nation
+  has a Guild
+  has a YeOldeInn
+  has a Palace
+  has a Lodge
+  has a Shipyard
+  has a Harbor
+
+  has WantCommodities
+  has NeedCommodities
+
+Fleet
+  has Food
+  has Water
+  has Ship(s)
+    Durability
+    Power
+    Handling
+    Cargo Load
+    CrewmenCapacity
+    Arms
+    Water
+    Food
+    Lumber
+    CrewCondition
+
+
+CrewMember
+  has Energy
+
+
+
 # Your Quest
 
 Your ancestors once enjoyed the luxuries of nobility until disaster reduced
