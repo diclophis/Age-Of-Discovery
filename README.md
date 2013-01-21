@@ -68,34 +68,35 @@
   * https://github.com/jruby/jruby/wiki/Troubleshooting-Memory-Use
   * http://kenai.com/projects/jruby/pages/PerformanceTuning
   * http://stackoverflow.com/questions/10397743/specifying-1-9-mode-with-jruby-and-rbenv
+  * http://ahalmeida.com/category/neo4j/
 
 # Models
 
-        Explorer/Hero
-          has fame
-          has gold
-          has Allies
-          has HomePort
-          has EnemyPorts
-          has ReputationWithHomePort
-          has Title
-          has Rank
+        Hero
+          has :name (string)
+          has :fame (number)
+          has :gold (number)
+          has :rank (string)
+
+          has Allies (node type: Hero)
+          has Enemies (node type: Hero)
+          has Home (node type: Port) (edge attribute: reputation)
           has Crew
-            Loyalty
-          has Ships/Fleet
+          has Fleet
           has Experience
             Battle
             Sailing
 
-        Port
-          a Port is a node on a un-directed graph of the World
-          has a Marketplace
+        Port (node on a un-directed graph of the World)
+          has :name
+
+          has Nationality (node type: Nation)
+          has Marketplace
             Food
             Water
             Commodities
               any marketable item produced to satisfy wants or needs
 
-          has a Nation
           has a Guild
           has a YeOldeInn
           has a Palace
@@ -122,20 +123,18 @@
             CrewCondition
 
         CrewMember
-          has Energy
-
-
+          has :energy
+          has :loyalty
 
 # Your Quest
 
-Your ancestors once enjoyed the luxuries of nobility until disaster reduced
-them to poverty and obscurity.  To win Age-Of-Discovery you must gain fortune
-and fame through bold adventures, and restore your family name to honor.
+Your ancestors once enjoyed the luxuries of nobility until disaster reduced them to poverty and obscurity.
+To win Age-Of-Discovery you must gain fortune and fame through bold adventures, and restore your family name to honor.
 
 ## Earn Gold
 
-Start off trading with nearby ports.  Discover where to buy and sell goods
-to make the best profit.
+Start off trading with nearby ports.
+Discover where to buy and sell goods to make the best profit.
 
 ## Gain Fame
 
@@ -155,11 +154,10 @@ Keep your eye on the Duke's title!
 ## Prepare for the Worst!
 
 Treat your crew fairly and they will sail you safely through many adventures.
-But, as their captain you must be protected.  Your family will never be
-restored to glory if you go down with your fleet!  Stock your ships well; your
-crew needs energy to maneuver you through turbulent seas.  If you're a true
-salt, you should complete your journey before 1522.
-
+But, as their captain you must be protected.
+Your family will never be restored to glory if you go down with your fleet!
+Stock your ships well; your crew needs energy to maneuver you through turbulent seas.
+If you're a true salt, you should complete your journey before 1522.
 
 ## Calling at Port
 
