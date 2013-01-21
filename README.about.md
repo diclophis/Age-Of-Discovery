@@ -64,7 +64,9 @@
   # http://neo4j.rubyforge.org/classes/Neo4j/Rails/Model.html
   # http://stackoverflow.com/questions/12243360/neo4j-using-rails-on-heroku
   # https://blogs.oracle.com/Jacobkessler/entry/four_guidelines_for_sizing_jruby
-
+  # http://stackoverflow.com/questions/104115/how-do-you-increase-the-maximum-heap-size-for-the-javac-process-in-borland-jbuil
+  # https://github.com/jruby/jruby/wiki/Troubleshooting-Memory-Use
+  # http://kenai.com/projects/jruby/pages/PerformanceTuning
 
 Explorer/Hero
   has fame
