@@ -52,6 +52,19 @@
   # http://www.howtogeek.com/howto/linux/show-the-list-of-installed-packages-on-ubuntu-or-debian/
   # sudo update-alternatives --install /usr/bin/llvm-ar llvm-ar /usr/bin/llvm-ar-3.0 50
   # http://www.cyberciti.biz/howto/question/linux/dpkg-cheat-sheet.php
+  # http://ciphed.blogspot.com/
+  # http://blog.vivekprahlad.com/multitenancy-with-neo4jrb
+  # http://ruby.dzone.com/articles/six-degrees-kevin-bacon-using
+  # http://www.savvas.me/2011/10/neo4j-ruby/
+  # http://stackoverflow.com/questions/13938632/seemingly-naked-nodes-in-neo4j-rails
+  # https://github.com/benjackson/devise-neo4j-example
+  # https://github.com/plataformatec/devise
+  # http://stackoverflow.com/questions/8577254/neo4j-with-jruby-project-rails
+  # http://geekmonkey.org/articles/25-using-neo4j-with-rails-3-2
+  # http://neo4j.rubyforge.org/classes/Neo4j/Rails/Model.html
+  # http://stackoverflow.com/questions/12243360/neo4j-using-rails-on-heroku
+  # https://blogs.oracle.com/Jacobkessler/entry/four_guidelines_for_sizing_jruby
+
 
 Explorer/Hero
   has fame
