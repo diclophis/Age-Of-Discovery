@@ -1,12 +1,15 @@
 GIT
-  remote: git://github.com/andreasronge/devise-neo4j.git
-  revision: 1fa76ed31ae43b77e6ac8c04ab430202a2b59c80
+  remote: git://github.com/cfitz/devise-neo4j.git
+  revision: db1a0ea46308c044c9453e2198a2b02e7db869c5
+  branch: devise2
   specs:
-    devise-neo4j (1.1.0)
-      devise
-      neo4j
-      oa-oauth (~> 0.2.0)
-      oa-openid (~> 0.2.0)
+    devise-neo4j (1.0.4-java)
+      bcrypt-ruby (~> 3.0)
+      devise (~> 2.2.0)
+      neo4j (~> 2.2.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
 
 GEM
   remote: https://rubygems.org/
@@ -38,7 +41,6 @@ GEM
     activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    addressable (2.2.8)
     arel (3.0.2)
     bcrypt-ruby (3.0.1-java)
     bouncy-castle-java (1.5.0146.1)
@@ -50,11 +52,6 @@ GEM
       warden (~> 1.2.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
-    faraday (0.6.1)
-      addressable (~> 2.2.4)
-      multipart-post (~> 1.1.0)
-      rack (>= 1.1.0, < 2)
-      rack (>= 1.1.0, < 2)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -71,7 +68,6 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.5.0)
-    multipart-post (1.1.5)
     neo4j (2.2.3-java)
       activemodel (>= 3.0.0, < 3.3)
       neo4j-wrapper (= 2.2.3)
@@ -84,32 +80,11 @@ GEM
     neo4j-cypher (1.0.0)
     neo4j-wrapper (2.2.3-java)
       neo4j-core (= 2.2.3)
-    nokogiri (1.4.7-java)
-      weakling (>= 0.0.3)
-    oa-core (0.2.4)
-    oa-oauth (0.2.4)
-      faraday (~> 0.6.1)
-      multi_json (>= 0.0.5)
-      nokogiri (~> 1.4.2)
-      oa-core (= 0.2.4)
-      oauth (~> 0.4.0)
-      oauth2 (~> 0.4.1)
-    oa-openid (0.2.4)
-      oa-core (= 0.2.4)
-      rack-openid (~> 1.2.0)
-      ruby-openid-apps-discovery
-    oauth (0.4.7)
-    oauth2 (0.4.1)
-      faraday (~> 0.6.1)
-      multi_json (>= 0.0.5)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-openid (1.2.0)
-      rack (>= 1.1.0)
-      ruby-openid (>= 2.1.8)
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.2)
@@ -143,9 +118,6 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
-    ruby-openid (2.2.2)
-    ruby-openid-apps-discovery (1.2.0)
-      ruby-openid (>= 2.1.7)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -164,7 +136,6 @@ GEM
     tzinfo (0.3.35)
     warden (1.2.1)
       rack (>= 1.0)
-    weakling (0.0.4-java)
 
 PLATFORMS
   java

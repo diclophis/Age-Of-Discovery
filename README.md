@@ -59,6 +59,9 @@
   * http://stackoverflow.com/questions/13938632/seemingly-naked-nodes-in-neo4j-rails
   * https://github.com/benjackson/devise-neo4j-example
   * https://github.com/plataformatec/devise
+  * https://github.com/andreasronge/neo4j/issues/135
+  * http://stackoverflow.com/questions/10872733/neo4j-rb-2-0-and-devise-2-0-is-there-any-way
+  * https://github.com/andreasronge/devise-neo4j
   * http://stackoverflow.com/questions/8577254/neo4j-with-jruby-project-rails
   * http://geekmonkey.org/articles/25-using-neo4j-with-rails-3-2
   * http://neo4j.rubyforge.org/classes/Neo4j/Rails/Model.html

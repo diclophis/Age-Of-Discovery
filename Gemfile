@@ -32,5 +32,5 @@ group :development, :test do
 end
 
 gem "neo4j", ">= 2.2.3"
-gem "devise-neo4j", :git => 'git://github.com/andreasronge/devise-neo4j.git'
+gem "devise-neo4j", :git => 'git://github.com/cfitz/devise-neo4j.git', :branch => 'devise2' #:git => 'git://github.com/andreasronge/devise-neo4j.git'
 
