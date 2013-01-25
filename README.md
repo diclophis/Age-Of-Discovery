@@ -72,6 +72,8 @@
   * http://kenai.com/projects/jruby/pages/PerformanceTuning
   * http://stackoverflow.com/questions/10397743/specifying-1-9-mode-with-jruby-and-rbenv
   * http://ahalmeida.com/category/neo4j/
+  * http://blog.headius.com/2010/03/jruby-startup-time-tips.html
+  * https://github.com/jruby/jruby/wiki/Improving-startup-time
 
 # Models
 
