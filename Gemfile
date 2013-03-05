@@ -29,6 +29,7 @@ gem 'jquery-rails'
 
 group :development, :test do
   gem "rspec-rails"
+  gem "rake"
 end
 
 gem "neo4j", ">= 2.2.3"
