@@ -1,3 +1,7 @@
+# Status
+
+[![Build Status](https://travis-ci.org/diclophis/Age-Of-Discovery.png?branch=master)](https://travis-ci.org/diclophis/Age-Of-Discovery)
+
 # Research
 
   * http://stackoverflow.com/questions/7976301/model-an-undirected-graph-in-rails
