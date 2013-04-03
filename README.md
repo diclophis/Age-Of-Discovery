@@ -74,6 +74,15 @@
   * http://ahalmeida.com/category/neo4j/
   * http://blog.headius.com/2010/03/jruby-startup-time-tips.html
   * https://github.com/jruby/jruby/wiki/Improving-startup-time
+  * http://neo4j.rubyforge.org/guides/configuration.html
+  * https://github.com/andreasronge/neo4j-wrapper/blob/master/spec/spec_helper.rb
+  * https://groups.google.com/forum/?fromgroups=#!topic/neo4jrb/TMxrIcyManM
+  * http://about.travis-ci.org/docs/user/languages/ruby/
+  * http://po-ru.com/diary/how-to-update-rubygems-to-a-specific-version/
+  * http://stackoverflow.com/questions/14206775/rails-emits-warning-rackfile-headers-parameter-replaces-cache-control-after
+  * http://procbits.com/2011/08/18/using-mongoid-with-rspec
+  * http://stackoverflow.com/questions/5150293/in-require-no-such-file-to-load-spec-helper
+  * http://stackoverflow.com/questions/5898308/how-to-safely-upgrade-an-amazon-ec2-instance-from-t1-micro-to-large
 
 # Models
 
