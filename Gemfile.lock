@@ -60,7 +60,6 @@ GEM
       thor (>= 0.14, < 2.0)
     jruby-openssl (0.8.2)
       bouncy-castle-java (>= 1.5.0146.1)
-    json (1.7.6)
     json (1.7.6-java)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -146,5 +145,6 @@ DEPENDENCIES
   jruby-openssl
   neo4j (>= 2.2.3)
   rails (= 3.2.11)
+  rake
   rspec-rails
   sass-rails (~> 3.2.3)
