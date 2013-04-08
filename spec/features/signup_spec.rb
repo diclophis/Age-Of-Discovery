@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "the signup process" do #, :type => :feature, :js => true do
   before :each do
-    # User.make(:email => 'user@example.com', :password => 'caplin')
+    Hero.create(:email => 'user@example.com', :password => 'password')
   end
 
   it "signs me in" do

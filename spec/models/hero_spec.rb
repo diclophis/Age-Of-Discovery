@@ -14,13 +14,13 @@ describe Hero do
     hero.fame.should == 0
 
     hero.converted_gold.length == 1
-    p hero.converted_gold
+    #p hero.converted_gold
     #hero.converted_gold.sum(:worth).should == 0
 
     hero.converted_gold << Voucher.new(:worth => 10)
 
     #p hero.converted_gold.methods
-    p hero.converted_gold.sum(:worth)
+    #p hero.converted_gold.sum(:worth)
     
     hero.converted_gold.sum(:worth).should == 10
 
