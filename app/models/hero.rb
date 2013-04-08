@@ -62,6 +62,7 @@ class Hero < Neo4j::Rails::Model
   has_n(:converted_gold).to(Voucher)
   #has_list :converted_gold
 
+  has_one(:rank).to(Rank)
 
   before_create :grant_initial_gold_voucher
 
