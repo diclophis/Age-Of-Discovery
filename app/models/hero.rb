@@ -53,4 +53,21 @@ class Hero < Neo4j::Rails::Model
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  property :fame, :type => Fixnum, :default => 0
+
+  #has_n :gold_transactions
+  #http://neo4j.rubyforge.org/guides/rules_and_functions.html
+
+  has_n(:converted_gold).to(Voucher)
+  #has_list :converted_gold
+
+
+  before_create :grant_initial_gold_voucher
+
+private
+
+  def grant_initial_gold_voucher
+    converted_gold << Voucher.new(:worth => 0)
+  end
 end
