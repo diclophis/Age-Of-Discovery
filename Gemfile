@@ -10,7 +10,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
 end
 
-gem 'jquery-rails'
+# To use jquery
+# gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -28,11 +29,10 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :development, :test do
-  gem "rspec-rails"
-  gem "rake"
   gem "poltergeist"
+  gem "rake"
+  gem "rspec-rails"
 end
 
 gem "neo4j", ">= 2.2.3"
 gem "devise-neo4j", :git => 'git://github.com/cfitz/devise-neo4j.git', :branch => 'devise2' #:git => 'git://github.com/andreasronge/devise-neo4j.git'
-
