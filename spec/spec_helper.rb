@@ -125,7 +125,7 @@ RSpec.configure do |config|
 
   config.before(:all, :type => :mock_db) do
     Neo4j.shutdown
-    Neo4j::Core::Database.default_embedded_db= MockDb
+    Neo4j::Core::Database.default_embedded_db = MockDb
     Neo4j.start
   end
 
