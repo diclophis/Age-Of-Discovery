@@ -133,4 +133,16 @@ RSpec.configure do |config|
     Neo4j.shutdown
     Neo4j::Core::Database.default_embedded_db = nil
   end
+
+  config.before(:each) do
+    #TODO: figure out why this doesnt work
+    #Neo4j::Transaction.run do
+    #  Neo4j.threadlocal_ref_node = Neo4j::Node.new
+    #end
+
+    #TODO: remove this hack
+    Hero.all.each do |hero|
+      hero.delete
+    end
+  end
 end
