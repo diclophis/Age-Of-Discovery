@@ -13,8 +13,8 @@ Capybara.current_driver = Capybara.javascript_driver
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-Neo4j::Config[:logger_level] = Logger::ERROR
-Neo4j::Config[:debug_java] = true
+#Neo4j::Config[:logger_level] = Logger::ERROR
+#Neo4j::Config[:debug_java] = true
 EMBEDDED_DB_PATH = File.join(Dir.tmpdir, "neo4j-wrapper-rspec-db")
 
 def embedded_db
@@ -113,24 +113,24 @@ RSpec.configure do |config|
   config.filter_run_excluding :slow => ENV['TRAVIS'] != 'true'
 
   config.before(:suite) do
-    Neo4j::Config[:storage_path] = File.join(Dir.tmpdir, "neo4j_wrapper_integration_rspec")
-    FileUtils.rm_rf Neo4j::Config[:storage_path]
-    Dir.mkdir(Neo4j::Config[:storage_path])
+    #Neo4j::Config[:storage_path] = File.join(Dir.tmpdir, "neo4j_wrapper_integration_rspec")
+    #FileUtils.rm_rf Neo4j::Config[:storage_path]
+    #Dir.mkdir(Neo4j::Config[:storage_path])
   end
 
   config.after(:suite) do
-    Neo4j.shutdown if Neo4j.running?
-    FileUtils.rm_rf Neo4j::Config[:storage_path]
+    #Neo4j.shutdown if Neo4j.running?
+    #FileUtils.rm_rf Neo4j::Config[:storage_path]
   end
 
   config.before(:all, :type => :mock_db) do
-    Neo4j.shutdown
+    #Neo4j.shutdown
     Neo4j::Core::Database.default_embedded_db = MockDb
-    Neo4j.start
+    #Neo4j.start
   end
 
   config.after(:all, :type => :mock_db) do
-    Neo4j.shutdown
+    #Neo4j.shutdown
     Neo4j::Core::Database.default_embedded_db = nil
   end
 

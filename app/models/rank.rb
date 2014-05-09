@@ -1,3 +1,4 @@
-class Rank < Neo4j::Rails::Model
+class Rank
+  include Neo4j::ActiveNode
   property :name, :type => String
 end

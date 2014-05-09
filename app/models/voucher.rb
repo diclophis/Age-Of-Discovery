@@ -1,5 +1,8 @@
-class Voucher < Neo4j::Rails::Model
-  property :worth, :type => Fixnum
+class Voucher
+  include Neo4j::ActiveNode
+
+  property :worth, :type => Float
+
   def +(b)
     worth + b.worth
   end

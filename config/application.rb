@@ -2,9 +2,13 @@ require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
 # require "active_record/railtie"
+
+require "rails"
+
+require "neo4j/railtie"
+
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "active_resource/railtie"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
@@ -52,8 +56,9 @@ module AgeOfDiscovery
     end
 
     # Configure where the neo4j database should exist
-    config.neo4j.storage_path = "#{config.root}/db/neo4j-#{Rails.env}"
-
+    # config.neo4j.storage_path = "#{config.root}/db/neo4j-#{Rails.env}"
+    config.neo4j.session_type = :embedded_db
+    config.neo4j.session_path = File.expand_path('neo4j-db', Rails.root)
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
