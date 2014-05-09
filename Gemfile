@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'jruby-openssl'
+# gem 'jruby-openssl'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,5 +34,7 @@ group :development, :test do
   gem "rspec-rails"
 end
 
-gem "neo4j", ">= 2.2.3"
-gem "devise-neo4j", :git => 'git://github.com/cfitz/devise-neo4j.git', :branch => 'devise2' #:git => 'git://github.com/andreasronge/devise-neo4j.git'
+gem "neo4j", :git => 'git://github.com/andreasronge/neo4j', :branch => "2.x" #">= 2.2.3"
+gem "devise-neo4j", :git => 'git://github.com/KieranLafferty/devise-neo4j.git'
+#:git => 'git://github.com/cfitz/devise-neo4j.git', :branch => 'devise2' #:git => 'git://github.com/andreasronge/devise-neo4j.git'
+#gem "devise-neo4j", :git => 'git://github.com/cfitz/devise-neo4j.git' #, :branch => 'devise2' #:git => 'git://github.com/andreasronge/devise-neo4j.git'

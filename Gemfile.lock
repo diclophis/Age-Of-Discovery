@@ -1,15 +1,25 @@
 GIT
-  remote: git://github.com/cfitz/devise-neo4j.git
-  revision: db1a0ea46308c044c9453e2198a2b02e7db869c5
-  branch: devise2
+  remote: git://github.com/KieranLafferty/devise-neo4j.git
+  revision: e05e5dd01a78680db8f08620e1eee698a2127f2a
   specs:
     devise-neo4j (1.0.4-java)
-      bcrypt-ruby (~> 3.0)
-      devise (~> 2.2.0)
-      neo4j (~> 2.2.0)
-      orm_adapter (~> 0.1)
-      railties (~> 3.1)
-      warden (~> 1.2.1)
+      bcrypt-ruby
+      devise
+      neo4j
+      orm_adapter
+      railties
+      warden
+
+GIT
+  remote: git://github.com/andreasronge/neo4j
+  revision: 230c986f4c4493ad316cc6e94db744cc30ad8720
+  branch: 2.x
+  specs:
+    neo4j (2.3.0-java)
+      activemodel (>= 3.0.0, < 3.3)
+      neo4j-wrapper (= 2.3.0)
+      orm_adapter (>= 0.0.3)
+      railties (>= 3.0.0, < 3.3)
 
 GEM
   remote: https://rubygems.org/
@@ -42,8 +52,9 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
-    bcrypt-ruby (3.0.1-java)
-    bouncy-castle-java (1.5.0147)
+    bcrypt (3.1.7-java)
+    bcrypt-ruby (3.1.5-java)
+      bcrypt (>= 3.1.3)
     builder (3.0.4)
     capybara (2.0.3)
       mime-types (>= 1.16)
@@ -54,44 +65,44 @@ GEM
       xpath (~> 1.0.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
-    devise (2.2.3)
-      bcrypt-ruby (~> 3.0)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (~> 3.1)
-      warden (~> 1.2.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.2)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     eventmachine (1.0.3-java)
+    faye-websocket (0.4.7)
+      eventmachine (>= 0.12.0)
     faye-websocket (0.4.7-java)
       eventmachine (>= 0.12.0)
+    ffi (1.6.0)
     ffi (1.6.0-java)
-    hike (1.2.1)
+    hike (1.2.3)
+    http_parser.rb (0.5.3)
     http_parser.rb (0.5.3-java)
     i18n (0.6.1)
     journey (1.0.4)
-    jruby-openssl (0.8.7)
-      bouncy-castle-java (>= 1.5.0147)
-    json (1.7.7-java)
+    json (1.8.1-java)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.22)
-    multi_json (1.7.2)
-    neo4j (2.2.3-java)
-      activemodel (>= 3.0.0, < 3.3)
-      neo4j-wrapper (= 2.2.3)
-      orm_adapter (>= 0.0.3)
-      railties (>= 3.0.0, < 3.3)
-    neo4j-community (1.8.1-java)
-    neo4j-core (2.2.3-java)
-      neo4j-community (>= 1.8.1, < 1.9)
+    multi_json (1.10.0)
+    neo4j-community (1.9.5-java)
+    neo4j-core (2.3.0-java)
+      neo4j-community (>= 1.9.M05, < 2.0)
       neo4j-cypher (~> 1.0.0)
-    neo4j-cypher (1.0.0)
-    neo4j-wrapper (2.2.3-java)
-      neo4j-core (= 2.2.3)
+    neo4j-cypher (1.0.3)
+    neo4j-wrapper (2.3.0-java)
+      neo4j-core (= 2.3.0)
+    nokogiri (1.5.9)
     nokogiri (1.5.9-java)
-    orm_adapter (0.4.0)
+    orm_adapter (0.5.0)
     poltergeist (1.1.0)
       capybara (~> 2.0, >= 2.0.1)
       faye-websocket (~> 0.4, >= 0.4.4)
@@ -100,7 +111,7 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-ssl (1.3.3)
+    rack-ssl (1.3.4)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -119,7 +130,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.0.4)
+    rake (10.3.1)
     rdoc (3.12.2)
       json (~> 1.4)
     rspec-core (2.13.1)
@@ -149,13 +160,14 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    thor (0.18.1)
-    tilt (1.3.6)
+    thor (0.19.1)
+    thread_safe (0.3.3-java)
+    tilt (1.4.1)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
-    warden (1.2.1)
+    warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
     xpath (1.0.0)
@@ -166,8 +178,7 @@ PLATFORMS
 
 DEPENDENCIES
   devise-neo4j!
-  jruby-openssl
-  neo4j (>= 2.2.3)
+  neo4j!
   poltergeist
   rails (= 3.2.13)
   rake
