@@ -144,6 +144,29 @@
           has :energy
           has :loyalty
 
+          - Build a fleet
+          - Start doing small tasks for merchants
+          - Gain fame and fortune by trading goods between ports
+          - explore the far reaches of the known world
+          - Start doing favours for the king to gain rank
+          - start going to places really far from Europe
+          - Start doing difficult tasks for guild masters and merchants
+          - Start attacking pirate fleets
+          - Kill some Turkish (or Spanish) warlord and save the princess
+
+          Even after the king gives you a title, the 
+          chancellor might get nervous about you hanging around the palace, and will throw
+          you out. As your rank becomes higher though, the odds that he'll throw you out 
+          become less and less.
+          The higher your rank and fame, the more bartering power you have over merchants
+          in Portugal-allied ports. If you say no to the shopkeeper (or that crook at the
+          shipyard) when he tells you how much a unit of something costs, he may ask you 
+          how much you'd be willing to pay. Depending on your rank/fame, you can rip him
+          off big time. Thanks to Alex Shovkoplyas for this great tip.
+
+          Promotions are earned upon passing certain milestones and meeting total fame requirements. Requirements for promotion in each individual area are separate, but the required fame is dependent upon your current rank. 
+
+
 # Your Quest
 
 Your ancestors once enjoyed the luxuries of nobility until disaster reduced them to poverty and obscurity.
