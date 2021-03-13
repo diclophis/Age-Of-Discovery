@@ -339,56 +339,80 @@ Stock up on more food than water if you plan to search for a spring mid-journey.
 
 ## Guild Menu Flow
 
-  1. Purchase->ListOfItems->PickItem->ConfirmPurchase
-  2. NationInformation->NationList->SelectNation->ConfirmPrice->ListRevenueHostilityFriendshipsToOthersAndAlly
+  1. Purchase
+       ->
+          ListOfItems
+            ->
+              PickItem
+                ->
+                  ConfirmPurchase
+
+  2. NationInformation
+       ->
+         NationList
+           ->
+             SelectNation
+               ->
+                 ConfirmPrice
+                   ->
+                     ListRevenueHostilityFriendshipsToOthersAndAlly
 
 ## Ye Olde Inn Menu Flow
 
-          Crew.........Recruit....Recruit crewmen
-                                  Assign.....Reassign crewmen
-                     Find Mates..............Hire mates to navigate
-                     Quit Mates..............Fire lazy mates
-                     Gossip..................Have dinner and listen for seafarer
-                                             news
-                     Tip.....................Tip the waitress and listen for news
-                     Gamble..................Play Poker or Black Jack
-
-
+          Crew......... Recruit ........ Recruit crewmen
+                        Assign ......... Reassign crewmen
+                Find Mates ............. Hire mates to navigate
+                Quit Mates ............. Fire lazy mates
+            Gossip ..................... Have dinner and listen for seafarer news
+          Tip .......................... Tip the waitress and listen for news
+          Gamble........................ Play Poker or Black Jack
 
 ## Items
 
 All Guild Items Have
+
   * Cost
   * Value
 
-Telescope - Spy on distant fleets and spot ports.
-  * Range
-  * SkillBonus
+* Telescope - Spy on distant fleets and spot ports.
+
+    * Range
+    * SkillBonus
   
-Sextant - Measure latitude and longitude to calculate position.
-  Speculum       Map out your position.
-  Amulets        Protect from disaster on the high seas.
-  Swords         Gain strength in battle.
-  Icons          Fire cannons with accuracy.
-  Treasure       Gemmed treasures to present to the Princess.
+* Sextant - Measure latitude and longitude to calculate position.
+
+* Speculum       Map out your position.
+
+* Amulets        Protect from disaster on the high seas.
+
+* Swords         Gain strength in battle.
+
+* Icons - Fire cannons with accuracy.
+
+* Treasure - Gemmed treasures to present to the Princess.
 
 
-  Marketplace     Sell....................Sell goods
-                  Buy.....................Buy goods
-                  View Market.............Check rates for specific markets
-                  Invest..................Invest to boost economic worth
+## Marketplace
+
+     Sell....................Sell goods
+     Buy.....................Buy goods
+     View Market.............Check rates for specific markets
+     Invest..................Invest to boost economic worth
 
 Sell->ListOfShips->SelectShip->ListItemsOnShipWithQuantityAndAmount->SelectItem->SelectAmount
 
 Buy->ListShipsWithLoadAndMax->SelectShip->ListItemsWithAmountAndCostShowTypesOfCargoSpaceLeft->SelectItem->ConfirmPrice/Haggle
 
-  Palace          Meet King/Sultan........Meet ruler to view his influence
-                                          in other lands
-                  Secret Call.............Court the Princess
-                  Request..........Funds..Request gold
-                                   Crew...Request sailors
-                  Savings.................Deposit up to 10,000,000 gold in the
-                                          ruler's care.
+## Palace
+
+  Meet King/Sultan........Meet ruler to view his influence
+                          in other lands
+  Secret Call.............Court the Princess
+  Request..........Funds..Request gold
+                   Crew...Request sailors
+  Savings.................Deposit up to 10,000,000 gold in the ruler's care.
+
+## Lodge
 
   Lodge           View.............Mates..Review your status or mates
                                    Fleet..Status of fleet
@@ -396,73 +420,77 @@ Buy->ListShipsWithLoadAndMax->SelectShip->ListItemsWithAmountAndCostShowTypesOfC
                   Lodging.................Spend the night
 
 
+## Inventory
 
-  Spice     Pepper, Cinnamon, Nutmeg,          Southeast Asia, The Americas
-            Pimento, Cloves
-  Food      Olive Oil, Grapes, Sugar,          Europe, The Americas
-            Cheese, Grain
-  Metals    Gold, Silver                       Africa, Asia
-  Gems      Quartz, Coral, Ivory, Pearl        Africa, Middle East,
-                                               The Americas
-  Textiles  Cotton, Raw Silk, Wool, Cloth,     Europe & distributed throughout
-            Silk                               world
-  Other     Firearms, Wood, Porcelain,         Europe & distributed throughout
-            Artwork, Carpet                    world
-
-
-  Shipyard    Buy........Buy Used Ship....Buy a ship that has seen rough seas
-                         Build New Ship...Design a new ship
-              Sell........................Sell a ship.  Take all sailors off
-                                          and bunk on other ships before sale
-                                          (Ye Olde Inn-Crew)
-              Fix.........................Make repairs to fleet
-              Remodel....Guns.............Buy new guns.  The shipyard master
-                                          will buy old guns for 1/2 price.
-                         Sails............Change sails
-                         Figurehead.......Adorn bow of ship for good luck
-                         Rename Ship......Rename for a small fee
-
-  Harbor      Sail...........Shove off for a new adventure.  Be sure to stock
-                             up for the voyage ahead
-              Restock........Restock water, food and lumber
-              Transfer.......Transfer supplies between ships
-
-Restock->RestockWaterOrFoodOrLumber->ListShipsWithLoadAndMax->SelectShip->SelectAmount->ConfirmPrice
-Water can be free->SelectAmount
-Sail->ConfirmDaysAtSea
-
-  Move        Direction    Tack to change direction.
-              Cast Anchor  Furl the sails and drop anchor.  Use the same
-                           command to set sail again.
-  Look        Inspect      Send up a lookout with a telescope to spy on a
-                           distant fleet or port.
-              Survey       Use sextant to calculate your position.
-              Negotiate    Exchange news with a nearby fleet.
-  Battle                   Attack a nearby fleet under the light of day.
-  Debark      Port Call    Pull into harbor.
-              Go Ashore    Drop anchor and row to land.
-  Information Fleet        View status of fleet.
-       (Info) Cargo        Review goods on board.
-              Land         You need one special item to view a map of the
-                           shoreline.
-              Mates        View the status of your mates or yourself.
-              Items        Check items in your keep.
-  Order       Ration       Change food and water rations for crew.
-              Distribute   Reward a mate with a bit o'gold.
-              Personnel    Reassign navigators or flagship.
-              Dispose      Scuttle a ship in the deep blue.  To scrap
-                           flagship, first reassign Captain to another vessel.
-
-Shore comands
-  Sail..........................Set sail into the mighty deep.
-  Fix...........................Use the lumber on board to make repairs to
-                                fleet.
-  Wait..........................Wait out a fleet from your position.  Push A
-                                to give further orders.
-  Search........Water...........Search for a fresh spring.
-                Treasure........Treasure hunt.  Are you on a specific quest?
-  Transfer......Crew............Reassign crewmen to other vessels.
-                Cargo...........Transfer any cargo between ships.
+      Spice     Pepper, Cinnamon, Nutmeg,          Southeast Asia, The Americas
+                Pimento, Cloves
+      Food      Olive Oil, Grapes, Sugar,          Europe, The Americas
+                Cheese, Grain
+      Metals    Gold, Silver                       Africa, Asia
+      Gems      Quartz, Coral, Ivory, Pearl        Africa, Middle East,
+                                                   The Americas
+      Textiles  Cotton, Raw Silk, Wool, Cloth,     Europe & distributed throughout
+                Silk                               world
+      Other     Firearms, Wood, Porcelain,         Europe & distributed throughout
+                Artwork, Carpet                    world
 
 
+      Shipyard    Buy........Buy Used Ship....Buy a ship that has seen rough seas
+                             Build New Ship...Design a new ship
+                  Sell........................Sell a ship.  Take all sailors off
+                                              and bunk on other ships before sale
+                                              (Ye Olde Inn-Crew)
+                  Fix.........................Make repairs to fleet
+                  Remodel....Guns.............Buy new guns.  The shipyard master
+                                              will buy old guns for 1/2 price.
+                             Sails............Change sails
+                             Figurehead.......Adorn bow of ship for good luck
+                             Rename Ship......Rename for a small fee
 
+      Harbor      Sail...........Shove off for a new adventure.  Be sure to stock
+                                 up for the voyage ahead
+                  Restock........Restock water, food and lumber
+                  Transfer.......Transfer supplies between ships
+
+## Recycle Pipelone
+
+    Restock->RestockWaterOrFoodOrLumber->ListShipsWithLoadAndMax->SelectShip->SelectAmount->ConfirmPrice
+    Water can be free->SelectAmount
+    Sail->ConfirmDaysAtSea
+
+## Primary UI
+
+      Move        Direction    Tack to change direction.
+                  Cast Anchor  Furl the sails and drop anchor.  Use the same
+                               command to set sail again.
+      Look        Inspect      Send up a lookout with a telescope to spy on a
+                               distant fleet or port.
+                  Survey       Use sextant to calculate your position.
+                  Negotiate    Exchange news with a nearby fleet.
+      Battle                   Attack a nearby fleet under the light of day.
+      Debark      Port Call    Pull into harbor.
+                  Go Ashore    Drop anchor and row to land.
+      Information Fleet        View status of fleet.
+           (Info) Cargo        Review goods on board.
+                  Land         You need one special item to view a map of the
+                               shoreline.
+                  Mates        View the status of your mates or yourself.
+                  Items        Check items in your keep.
+      Order       Ration       Change food and water rations for crew.
+                  Distribute   Reward a mate with a bit o'gold.
+                  Personnel    Reassign navigators or flagship.
+                  Dispose      Scuttle a ship in the deep blue.  To scrap
+                               flagship, first reassign Captain to another vessel.
+
+## On Shore Exploration
+
+      Sail............................. Set sail into the mighty deep.
+      Fix.............................. Use the lumber on board to make repairs to fleet
+
+      Wait............................. Wait out a fleet from your position. Activate to give further orders.
+
+      Search........ Water ............ Search for a fresh spring.
+                     Treasure ......... Treasure hunt.  Are you on a specific quest?
+
+      Transfer...... Crew ............. Reassign crewmen to other vessels.
+                     Cargo ............ Transfer any cargo between ships.

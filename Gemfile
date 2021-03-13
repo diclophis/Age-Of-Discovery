@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.18'
-
 # gem 'jruby-openssl'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  # gem 'sass-rails',   '~> 3.2.3'
 end
 
 # To use jquery
@@ -28,13 +26,24 @@ end
 # To use debugger
 # gem 'debugger'
 
+gem 'sinatra'
+gem 'markaby'
+gem 'rack'
+gem 'rake'
+
+gem 'neo4j'
+#gem 'rails'
+
+gem 'activegraph', '~> 10.0.0' # For example, see https://rubygems.org/gems/activegraph/versions for the latest versions
+gem 'neo4j-ruby-driver', '~> 1.7.0'
+
 group :development, :test do
-  gem "poltergeist"
-  gem "rake"
-  gem "rspec-rails"
+  #gem "poltergeist"
+  #gem 'rspec-rails'
+  gem "rspec"
 end
 
-gem "neo4j", :git => 'git://github.com/andreasronge/neo4j', :branch => "2.x" #">= 2.2.3"
-gem "devise-neo4j", :git => 'git://github.com/KieranLafferty/devise-neo4j.git'
+#, :git => 'git://github.com/andreasronge/neo4j', :branch => "2.x" #">= 2.2.3"
+#gem "devise-neo4j", :git => 'git://github.com/KieranLafferty/devise-neo4j.git'
 #:git => 'git://github.com/cfitz/devise-neo4j.git', :branch => 'devise2' #:git => 'git://github.com/andreasronge/devise-neo4j.git'
 #gem "devise-neo4j", :git => 'git://github.com/cfitz/devise-neo4j.git' #, :branch => 'devise2' #:git => 'git://github.com/andreasronge/devise-neo4j.git'

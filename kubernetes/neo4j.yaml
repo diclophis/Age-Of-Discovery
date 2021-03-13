@@ -1,0 +1,376 @@
+---
+# This ConfigMap gets passed to ALL CORE AND READ REPLICA cluster members to configure them.
+# It contains the truly common things that are configuration wide.  The core and replica set
+# each have a separate configmap for those concerns.
+#
+# Here we translate a lot of user settings & preferences into env vars that get passed
+# to the Neo4j docker container.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: neo4j-fulln
+data:
+  NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+  NUMBER_OF_CORES: "1"
+  AUTH_ENABLED: "false"
+  # Enable listening for backups; default port 6362
+  NEO4J_dbms_backup_enabled: "true"
+  NEO4J_dbms_backup_listen__address: "0.0.0.0:6362"
+  NEO4J_dbms_default__database: default
+  NEO4J_dbms_connector_bolt_listen__address: 0.0.0.0:7687
+  NEO4J_dbms_connector_http_listen__address: 0.0.0.0:7474
+  NEO4J_dbms_connector_https_listen__address: 0.0.0.0:7473
+  NEO4J_causal__clustering_minimum__core__cluster__size__at__formation: "3"
+  NEO4J_causal__clustering_minimum__core__cluster__size__at__runtime: "2"
+  NEO4J_dbms_jvm_additional: "-XX:+ExitOnOutOfMemoryError"
+  NEO4J_metrics_graphite_enabled: ""
+  NEO4J_metrics_graphite_server: ""
+  NEO4J_metrics_graphite_interval: ""
+  NEO4J_metrics_prometheus_enabled: ""
+  NEO4J_metrics_prometheus_endpoint: ""
+  NEO4J_metrics_csv_enabled: ""
+  NEO4J_metrics_csv_interval: ""
+  NEO4J_metrics_jmx_enabled: ""
+  #NEO4JLABS_PLUGINS: {{ .Values.plugins | toJson }}
+  #NEO4J_apoc_import_file_use__neo4j__config: "true"
+...
+---
+# This ConfigMap gets passed to all core cluster members to configure them.
+# Take note that some networking settings like internal hostname still get configured
+# when the pod starts, but most non-networking specific configs can be tailored here.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: neo4j-fullc
+data:
+  NEO4J_dbms_directories_logs: "/mnt/logs"
+  # if .Values.core.standalone
+  # https://neo4j.com/docs/operations-manual/current/reference/configuration-settings/#config_dbms.mode
+  NEO4J_dbms_mode: SINGLE
+  #NEO4J_dbms_mode: CORE
+...
+---
+# This service is intended for clients running in kubernetes to connect to the
+# cluster.  This distinguishes it from discovery-lb which is about cluster formation
+# and internal communication.
+apiVersion: v1
+kind: Service
+metadata:
+  name: neo4j-fulla
+  labels:
+    neo4j.com/bolt: "true"
+    neo4j.com/http: "true"
+    app.kubernetes.io/managed-by: neo4j-rels
+    app.kubernetes.io/instance: neo4j-devbits
+    helm.sh/chart: "neo4j-chart"
+    app.kubernetes.io/name: neo4j
+    app.kubernetes.io/component: core
+  annotations:
+spec:
+  type: ClusterIP
+#{{- if (or (eq .Values.core.service.type "ClusterIP") (empty .Values.core.service.type)) }}
+#  type: ClusterIP
+#  clusterIP: None
+#{{- else if eq .Values.core.service.type "LoadBalancer" }}
+#  type: LoadBalancer
+#  {{- with .Values.core.service.loadBalancerSourceRanges }}
+#  loadBalancerSourceRanges:
+#    {{ toYaml . | nindent 4 }}
+#  {{- end -}}
+#{{- else }}
+#  type: {{ .Values.core.service.type }}
+#{{- end }}
+  ports:
+    - name: tcp-http
+      port: 7474
+      targetPort: 7474
+    - name: tcp-bolt
+      port: 7687
+      targetPort: 7687
+    - name: tcp-https
+      port: 7473
+      targetPort: 7473
+    - name: tcp-backup
+      port: 6362
+      targetPort: 6362
+  selector:
+    app.kubernetes.io/name: neo4j
+    app.kubernetes.io/instance: neo4j-devbits
+    app.kubernetes.io/component: core
+...
+---
+apiVersion: "apps/v1"
+kind: StatefulSet
+metadata:
+  name: "neo4j-ss"
+  labels:
+    app.kubernetes.io/managed-by: neo4j-rels
+    app.kubernetes.io/instance: neo4j-devbits
+    helm.sh/chart: neo4j-chart
+    app.kubernetes.io/name: neo4j
+    app.kubernetes.io/component: core
+spec:
+  podManagementPolicy: Parallel
+  serviceName: neo4j-fulla
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: neo4j-devbits
+      app.kubernetes.io/name: neo4j
+      app.kubernetes.io/component: core
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/managed-by: neo4j-rels
+        app.kubernetes.io/instance: neo4j-devbits
+        helm.sh/chart: "neo4j-chart"
+        app.kubernetes.io/name: neo4j
+        app.kubernetes.io/component: core
+      annotations:
+    spec:
+      serviceAccountName: neo4j-sa
+      # High value permits checkpointing on Neo4j shutdown.  See: https://neo4j.com/developer/kb/checkpointing-and-log-pruning-interactions/
+      #terminationGracePeriodSeconds: {{ .Values.core.terminationGracePeriodSeconds }}
+      containers:
+      - name: neo4j-fulla
+        image: "neo4j:4.2.2-enterprise"
+        imagePullPolicy: IfNotPresent
+        envFrom:
+          - configMapRef:
+              name: neo4j-fulln
+          - configMapRef:
+              name: neo4j-fullc
+        env:
+          #- name: NEO4J_SECRETS_PASSWORD
+          #  valueFrom:
+          #    secretKeyRef:
+          #      {{- if .Values.existingPasswordSecret }}
+          #      name: {{ .Values.existingPasswordSecret }}
+          #      {{- else }}
+          #      name: {{ template "neo4j.secrets.fullname" . }}
+          #      {{- end}}
+          #      key: {{ template "neo4j.secrets.key" . }}
+        command:
+          - "/bin/bash"
+          - "-c"
+          - |
+            export core_idx=$(hostname | sed 's|.*-||')
+            # Processes key configuration elements and exports env vars we need.
+            . /helm-init/init.sh
+            echo "Starting Neo4j CORE $core_idx on $HOST"
+            exec /docker-entrypoint.sh "neo4j"
+        ports:
+        - containerPort: 5000
+          name: tcp-discovery
+        - containerPort: 7000
+          name: tcp-raft
+        - containerPort: 6000
+          name: tcp-tx
+        - containerPort: 7474
+          name: tcp-browser
+        - containerPort: 7687
+          name: tcp-bolt
+        - containerPort: 7688
+          name: tcp-boltrouting
+        #- containerPort: 2004
+        #  name: tcp-prometheus
+        #- containerPort: 2003
+        #  name: tcp-graphite
+        #- containerPort: 3637
+        #  name: tcp-jmx
+        volumeMounts:
+        - name: init-script
+          mountPath: /helm-init
+        - name: datadir
+          mountPath: "/mnt"
+        - name: plugins
+          mountPath: /plugins
+        #readinessProbe:
+        #livenessProbe:
+        resources:
+      initContainers:
+      securityContext:
+      volumes:
+        - name: init-script
+          configMap:
+            name: "neo4j-rel-init-script"
+        - name: datadir
+          emptyDir: {}
+        - name: plugins
+          emptyDir: {}
+      nodeSelector:
+      affinity:
+      tolerations:
+  #volumeClaimTemplates:
+  #  - metadata:
+  #      name: datadir
+  #      annotations:
+  #    spec:
+  #      accessModes:
+  #        - ReadWriteOnce
+  #      storageClassName: ""
+  #      resources:
+  #        requests:
+  #          storage: "100M"
+#{{- if .Values.podDisruptionBudget -}}
+#apiVersion: policy/v1beta1
+#kind: PodDisruptionBudget
+#metadata:
+#  labels:
+#    app.kubernetes.io/name: neo4j
+#    helm.sh/chart: "neo4j-chart"
+#    app.kubernetes.io/managed-by: neo4j-serv
+#    app.kubernetes.io/instance: neo4j-rel
+#  name: neo4j-fulla
+#spec:
+#  selector:
+#    matchLabels:
+#      app.kubernetes.io/name: neo4j
+#      app.kubernetes.io/instance: neo4j-devbits
+#{{ toYaml .Values.podDisruptionBudget | indent 2 }}
+# This is a bash script that runs on each pod when it starts up, and handles issues in the environment
+# like configuration processing.
+...
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "neo4j-rel-init-script"
+  labels:
+    helm.sh/chart: neo4j-chart
+    app.kubernetes.io/managed-by: neo4j-serv
+    app.kubernetes.io/instance: neo4j-devbits
+    app.kubernetes.io/name: neo4j
+    app.kubernetes.io/component: init
+data:
+  init.sh: |-
+    # Local hostname (graph-neo4j-core-0) converted to graph_neo4j_core_0
+    # So that if a var is defined graph_neo4j_core_0_MYSETTING
+    # its host-specific value will override whatever the default MYSETTING
+    # is in the environment.
+    # In this way we can give a single configmap to all 3 pods in a stateful
+    # set, and still be able to do per-pod bespoke config.
+    export override_prefix=$(hostname | sed s/-/_/g)
+    # Ensure HOST is set, but take a default from the outer environment if present.
+    export HOST=${HOST:-$(hostname -f)}
+    declare -A NEO4J_SETTINGS
+    # Populate NEO4J_SETTINGS with keys for all settings overriden as env vars
+    for variable_name in $(compgen -e) ; do
+      if [[ "${variable_name}" == "${override_prefix}"* ]]; then
+        NEO4J_SETTINGS[${variable_name#"${override_prefix}_"}]=""
+      fi
+    done
+    # HTTPS
+    NEO4J_SETTINGS[dbms_connector_https_enabled]=true
+    # Default settings values; either inherit from outward settings,
+    # or, lacking any definition, take the local host 
+    NEO4J_SETTINGS[NEO4J_dbms_default__advertised__address]=${NEO4J_dbms_default__advertised__address:-$HOST}
+    NEO4J_SETTINGS[NEO4J_dbms_connector_bolt_advertised__address]=${NEO4J_dbms_connector_bolt_advertised__address:-$HOST:7687}
+    NEO4J_SETTINGS[NEO4J_dbms_connector_http_advertised__address]=${NEO4J_dbms_connector_http_advertised__address:-$HOST:7474}
+    NEO4J_SETTINGS[NEO4J_dbms_connector_https_advertised__address]=${NEO4J_dbms_connector_https_advertised__address:-$HOST:7473}
+    NEO4J_SETTINGS[NEO4J_causal__clustering_discovery__advertised__address]=${NEO4J_causal__clustering_discovery__advertised__address:-$HOST:5000}
+    # Important: note the label selector only does discovery against first 3 cores. This is intentional;
+    # the list service API may return other hosts which aren't yet ready, and this will fail discovery
+    # This setting is intentionally overridable for power users; discovery type of k8s is not.
+    # See: https://github.com/neo4j-contrib/neo4j-helm/issues/80
+    default_label_selector="neo4j.com/cluster=neo4j-fulla,neo4j.com/role=CORE,neo4j.com/coreindex in (0, 1, 2)"
+    NEO4J_SETTINGS[NEO4J_causal__clustering_kubernetes_label__selector]=${NEO4J_causal__clustering_kubernetes_label__selector:-$default_label_selector}
+    neo4jAdminMemrec() {
+      echo "Calling neo4j-admin memrec to suggest memory settings:"
+      # Neo4j-admin memrec outputs configuration like this: dbms.memory.heap.max_size=9000m
+      # with a lot of comments.  We strip the comments, then
+      # process its output into a docker env var by following the Neo4j docker rules:
+      # underscores doubled, dots -> _
+      # So dbms.memory.heap.max_size=9000m => export NEO4J_dbms_memory_heap_max__size=9000m
+      echo '' > /var/lib/neo4j/conf/memory-recommendations.sh
+      for line in $( /var/lib/neo4j/bin/neo4j-admin memrec | grep -v '^\#' ) ; do
+          # print out the memory recommendation that is being applied
+          echo "${line}"
+          echo "export $( echo "${line}" | sed 's/_/__/g' | sed 's/\./_/g' | sed 's/^/NEO4J_/g' )" >> /var/lib/neo4j/conf/memory-recommendations.sh
+      done
+      . /var/lib/neo4j/conf/memory-recommendations.sh
+    }
+    #NEO4J_SETTINGS[NEO4J_dbms_memory_heap_initial__size]={{ .Values.dbms.memory.heap.initial_size }}
+    #NEO4J_SETTINGS[NEO4J_dbms_memory_heap_max__size]={{ .Values.dbms.memory.heap.max_size }}
+    #NEO4J_SETTINGS[NEO4J_dbms_memory_pagecache_size]={{ .Values.dbms.memory.pagecache.size }}
+    #NEO4J_SETTINGS[NEO4J_dbms_memory_transaction_max__size]={{ .Values.dbms.memory.transaction.max_size }}
+    #NEO4J_SETTINGS[NEO4J_dbms_memory_transaction_global__max__size]={{ .Values.dbms.memory.transaction.global_max_size }}
+    #NEO4J_SETTINGS[NEO4J_dbms_tx__state_memory__allocation]={{ .Values.dbms.memory.transaction.memory_allocation }}
+    echo "Configuration override prefix = $override_prefix"
+    # Check to see if a particular env var has a host-specific override.  If it does,
+    # return the override.  Otherwise return the default value.
+    getSettingValue() {
+      # Setting key: $1
+      # Default value: $2
+      # Return: modify $SETTING_VALUE
+      export override_varname=$override_prefix"_"$1
+      # echo "Checking for override $override_varname"
+      if [ -z "${!override_varname}" ] ; then
+          SETTING_VALUE=$2
+      else
+          SETTING_VALUE=${!override_varname}
+      fi
+    }
+    # For each config item, set an env var to the appropriate
+    # metadata value or default value.  This sets us up for envsubst
+    for setting in "${!NEO4J_SETTINGS[@]}" ; do
+      # echo setting $setting
+      # echo default 
+      getSettingValue $setting "${NEO4J_SETTINGS[$setting]}"
+      # echo "Setting $setting to $SETTING_VALUE"
+      # Set the variable named setting to the result.
+      # See: https://stackoverflow.com/questions/9714902/how-to-use-a-variables-value-as-another-variables-name-in-bash
+      export $setting="$SETTING_VALUE"
+    done
+    if [ "${AUTH_ENABLED:-}" == "true" ]; then
+      export NEO4J_AUTH="neo4j/${NEO4J_SECRETS_PASSWORD}"
+    else
+      export NEO4J_AUTH="none"
+    fi
+    # Once passed through to auth, unset this so Neo4j doesn't misinterpret it as config.
+    unset NEO4J_SECRETS_PASSWORD
+...
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: neo4j
+  labels:
+    app.kubernetes.io/name: neo4j
+    helm.sh/chart: "neo4j-chart"
+    app.kubernetes.io/managed-by: neo4j-rels
+    app.kubernetes.io/instance: neo4j-devbits
+type: Opaque
+data:
+  neo4j-password: password
+...
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+    annotations:
+    name: neo4j-sa
+...
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+    name: neo4j-fulla-service-reader
+rules:
+    - apiGroups: [""] # "" indicates the core API group
+      resources: ["services"]
+      verbs: ["get", "watch", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+    name: neo4j-fulla-sa-to-service-reader-binding
+subjects:
+    - kind: ServiceAccount
+      name: neo4j-sa
+roleRef:
+    # "roleRef" specifies the binding to a Role / ClusterRole
+    kind: Role # this must be Role or ClusterRole
+    name: neo4j-fulla-service-reader # this must match the name of the Role or ClusterRole you wish to bind to
+    apiGroup: rbac.authorization.k8s.io
+...
