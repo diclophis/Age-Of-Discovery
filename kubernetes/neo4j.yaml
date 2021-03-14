@@ -12,7 +12,7 @@ metadata:
 data:
   NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
   NUMBER_OF_CORES: "1"
-  AUTH_ENABLED: "false"
+  AUTH_ENABLED: "true"
   # Enable listening for backups; default port 6362
   NEO4J_dbms_backup_enabled: "true"
   NEO4J_dbms_backup_listen__address: "0.0.0.0:6362"
@@ -133,7 +133,8 @@ spec:
       #terminationGracePeriodSeconds: {{ .Values.core.terminationGracePeriodSeconds }}
       containers:
       - name: neo4j-fulla
-        image: "neo4j:4.2.2-enterprise"
+        #image: "neo4j:4.2.2-enterprise"
+        image: "neo4j:4.0.0-enterprise"
         imagePullPolicy: IfNotPresent
         envFrom:
           - configMapRef:
@@ -141,9 +142,11 @@ spec:
           - configMapRef:
               name: neo4j-fullc
         env:
-          #- name: NEO4J_SECRETS_PASSWORD
-          #  valueFrom:
-          #    secretKeyRef:
+        - name: NEO4J_SECRETS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: neo4j
+              key: neo4j-password
           #      {{- if .Values.existingPasswordSecret }}
           #      name: {{ .Values.existingPasswordSecret }}
           #      {{- else }}
@@ -342,7 +345,7 @@ metadata:
     app.kubernetes.io/instance: neo4j-devbits
 type: Opaque
 data:
-  neo4j-password: password
+  neo4j-password: 'cGFzc3dvcmQ='
 ...
 ---
 apiVersion: v1

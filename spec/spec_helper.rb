@@ -148,7 +148,23 @@
 #    end
 #  end
 #end
+
+#NEO4J_URL = "bolt://#{ENV['NEO4J_CLIENT_USER']}:#{ENV['NEO4J_CLIENT_PASS']}@neo4j:7687"
+#NEO4J_HTTP_URL = "http://#{ENV['NEO4J_CLIENT_USER']}:#{ENV['NEO4J_CLIENT_PASS']}@neo4j:7474"
 #
+#def get_session
+#  begin # Only move on to create a session if there is no current session (ie if Neo4j::ActiveBase.current_session throws an error)
+#    Neo4j::ActiveBase.current_session
+#    logger.debug('Session already exists, skipping CypherSession.new')
+#    return true
+#  rescue
+#    #neo4j_adaptor = Neo4j::Core::CypherSession::Adaptors::Bolt.new(NEO4J_URL, {wrap_level: :proc, ssl:false}) #
+#    neo4j_adaptor = Neo4j::Core::CypherSession::Adaptors::HTTP.new(NEO4J_HTTP_URL, {wrap_level: :proc})
+#    Neo4j::ActiveBase.on_establish_session { Neo4j::Core::CypherSession.new(neo4j_adaptor) }
+#
+#    return true
+#  end
+#end
 
 require File.expand_path("../../config/environment", __FILE__)
 
@@ -157,7 +173,48 @@ require File.expand_path("../../config/environment", __FILE__)
 #$LOAD_PATH.unshift(File.absolute_path(lib)) unless $LOAD_PATH.include?(File.absolute_path(lib))
 #require 'aod'
 
-RSpec.configure do |c|
-  c.before :each do
+RSpec.configure do |config|
+  #c.before :each do
+  #end
+
+  config.before(:suite) do
+    ##Neo4j::Config[:storage_path] = File.join(Dir.tmpdir, "neo4j_wrapper_integration_rspec")
+    ##FileUtils.rm_rf Neo4j::Config[:storage_path]
+    ##Dir.mkdir(Neo4j::Config[:storage_path])
+    ##Neo4j::ActiveBase.current_session
+    ##NEO4J_HTTP_URL = "http://#{ENV['NEO4J_CLIENT_USER']}:#{ENV['NEO4J_CLIENT_PASS']}@neo4j:7474"
+    #NEO4J_HTTP_URL = "http://10.99.111.86:7474"
+    #neo4j_adaptor = Neo4j::Core::CypherSession::Adaptors::HTTP.new(NEO4J_HTTP_URL, {wrap_level: :proc})
+    #Neo4j::ActiveBase.on_establish_session { Neo4j::Core::CypherSession.new(neo4j_adaptor) }
+    ActiveGraph::Base.driver = Neo4j::Driver::GraphDatabase.driver(
+      'bolt://10.99.111.86:7687',
+      Neo4j::Driver::AuthTokens.basic('neo4j', 'password'),
+      encryption: false
+    )
+
+    #ActiveGraph::Base.driver = Neo4j::Driver::GraphDatabase.driver('neo4j://10.99.111.86:7474')
+  end
+
+  config.after(:suite) do
+    #Neo4j.shutdown if Neo4j.running?
+    #FileUtils.rm_rf Neo4j::Config[:storage_path]
+  end
+
+  #config.before(:all, :type => :mock_db) do
+  #  Neo4j.shutdown
+  #  Neo4j::Core::Database.default_embedded_db = MockDb
+  #  Neo4j.start
+  #end
+
+  #config.after(:all, :type => :mock_db) do
+  #  Neo4j.shutdown
+  #  Neo4j::Core::Database.default_embedded_db = nil
+  #end
+
+  config.before(:each) do
+    #TODO: figure out why this doesnt work
+    #Neo4j::Transaction.run do
+    #  Neo4j.threadlocal_ref_node = Neo4j::Node.new
+    #end
   end
 end

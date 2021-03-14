@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Aod::Models::Hero do
   def valid_hero
-    hero = subject.new
+    hero = described_class.new
     hero.username = "foo"
     hero.email = "foo@foo.com"
     hero.password = "qwerty123"
@@ -11,7 +11,7 @@ describe Aod::Models::Hero do
 
   it "should have a username, email and password" do
     hero = valid_hero
-    hero.save!.should be_nil
+    hero.save!.should be_truthy
 
     hero.username.should == "foo"
     hero.fame.should == 0

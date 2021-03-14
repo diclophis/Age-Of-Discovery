@@ -31,11 +31,13 @@ gem 'markaby'
 gem 'rack'
 gem 'rake'
 
-gem 'neo4j'
+#gem 'neo4j'
 #gem 'rails'
 
-gem 'activegraph', '~> 10.0.0' # For example, see https://rubygems.org/gems/activegraph/versions for the latest versions
-gem 'neo4j-ruby-driver', '~> 1.7.0'
+gem 'activegraph', '~> 10.0.0', :require => false # For example, see https://rubygems.org/gems/activegraph/versions for the latest versions
+
+gem 'neo4j-ruby-driver' #, '~> 1.7.0', :require => false
+#gem 'neo4j-rake_tasks', :require => false
 
 group :development, :test do
   #gem "poltergeist"

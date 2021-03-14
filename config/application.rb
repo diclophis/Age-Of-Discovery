@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+#require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
 # require "active_record/railtie"
@@ -8,13 +8,28 @@ require File.expand_path('../boot', __FILE__)
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  # Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-  Bundler.require(:default, :assets, :development, :test)
-end
+#if defined?(Bundler)
+#  # If you precompile assets before deploying to production, use this line
+#  # Bundler.require(*Rails.groups(:assets => %w(development test)))
+#  # If you want your assets lazily compiled in production, use this line
+#  # Bundler.require(:default, :assets, Rails.env)
+#  Bundler.require(:default, :assets, :development, :test)
+#end
+
+
+#require 'active_graph'
+
+#require 'sinatra'
+#require 'markaby'
+#require 'neo4j'
+#require 'active_graph/core'
+
+lib = File.expand_path("../../lib", __FILE__)
+puts [__FILE__, lib, File.absolute_path(lib)].inspect
+
+$LOAD_PATH.unshift(File.absolute_path(lib)) unless $LOAD_PATH.include?(File.absolute_path(lib))
+
+require 'aod'
 
 #module AgeOfDiscovery
 #  class Application < Rails::Application

@@ -2,8 +2,8 @@ module Aod
   module Models
     class Hero
       #< Neo4j::Rails::Model
-      #include ActiveGraph::Node
-      include Neo4j::ActiveNode
+      include ActiveGraph::Node
+      #include Neo4j::ActiveNode
 
       # Neo4j.rb needs to have property definitions before any validations. So, the property block needs to come before 
       # loading your devise modules. 
@@ -22,7 +22,8 @@ module Aod
 
       ## Database authenticatable
       property :email #, :type => String, :null => false, :default => "", :index => :exact
-      property :encrypted_password, :type =>  NilClass
+      property :password
+      #property :encrypted_password, :type =>  NilClass
 
       ## If you include devise modules, uncomment the properties below.
 
@@ -31,11 +32,11 @@ module Aod
       #index :remember_token, :type => :exact
 
       ## Recoverable
-      property :reset_password_token,   :type => NilClass, :index => :exact
+      #property :reset_password_token,   :type => NilClass, :index => :exact
       property :reset_password_sent_at, :type =>   Time
 
       ## Trackable
-      property :sign_in_count, :type => Fixnum, :default => 0
+      property :sign_in_count, :type => Integer, :default => 0
       property :current_sign_in_at, :type => Time
       property :last_sign_in_at, :type => Time
       property :current_sign_in_ip, :type =>  String
@@ -60,17 +61,22 @@ module Aod
       #devise :database_authenticatable, :registerable,
       #       :recoverable, :rememberable, :trackable, :validatable
 
-      property :fame, :type => Fixnum, :default => 0
+      property :fame, :type => Integer, :default => 0
 
       #has_n :gold_transactions
       #http://neo4j.rubyforge.org/guides/rules_and_functions.html
 
       #has_n(:converted_gold).to(Voucher)
+      has_many :in, :converted_gold, :type => :voucher, :model_class => "Aod::Models::Voucher"
       ##has_list :converted_gold
 
       #has_one(:rank).to(Rank)
 
       #before_create :grant_initial_gold_voucher
+
+    #def converted_gold
+    #  vouchers
+    #end
 
     private
 

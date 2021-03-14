@@ -1,6 +1,3 @@
-require 'sinatra'
-require 'markaby'
-require 'neo4j'
 
 #if defined?(Bundler)
 #  # If you precompile assets before deploying to production, use this line
@@ -9,7 +6,17 @@ require 'neo4j'
 #  Bundler.require(:default, :assets, :development, :test)
 #end
 
-#require 'active_graph/rake_tasks'
+#require 'active_graph/core'
+
+#require 'active_graph'
+#require 'sinatra'
+#require 'markaby'
+#require 'neo4j'
+
+#require "zeitwerk"
+#loader = Zeitwerk::Loader.for_gem
+#loader.setup # ready!
+require 'active_graph'
 
 module Aod
   VERSION = "0.1.0"
@@ -17,3 +24,5 @@ module Aod
   autoload 'Application', 'aod/application'
   autoload 'Models', 'aod/models'
 end
+
+

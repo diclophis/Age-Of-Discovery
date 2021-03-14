@@ -1,9 +1,18 @@
-class Voucher < Neo4j::Rails::Model
-  property :worth, :type => Fixnum
-  def +(b)
-    worth + b.worth
-  end
+#
 
-  def to_i
+module Aod
+  module Models
+    class Voucher
+      include ActiveGraph::Node
+
+      property :worth, :type => Integer
+
+      def +(b)
+        worth + b.worth
+      end
+
+      def to_i
+      end
+    end
   end
 end

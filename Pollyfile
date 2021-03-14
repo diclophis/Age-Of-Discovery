@@ -23,6 +23,10 @@
 
   apt %w{git curl apt-transport-https aptitude ca-certificates apt-utils software-properties-common docker.io build-essential libyaml-dev ruby2* libruby2* ruby-bundler rubygems-integration rake amazon-ecr-credential-helper}
 
+  run %q{curl -s -v -Lo seabolt-1.7.4-Linux-ubuntu-18.04.deb https://github.com/neo4j-drivers/seabolt/releases/download/v1.7.4/seabolt-1.7.4-Linux-ubuntu-18.04.deb}
+  run %q{dpkg -i seabolt-1.7.4-Linux-ubuntu-18.04.deb}
+
+
   ##TODO: ppa module / extra repo module
   #run %q{curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add}
   #run %q{apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"}
