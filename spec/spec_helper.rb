@@ -186,11 +186,6 @@ RSpec.configure do |config|
     #NEO4J_HTTP_URL = "http://10.99.111.86:7474"
     #neo4j_adaptor = Neo4j::Core::CypherSession::Adaptors::HTTP.new(NEO4J_HTTP_URL, {wrap_level: :proc})
     #Neo4j::ActiveBase.on_establish_session { Neo4j::Core::CypherSession.new(neo4j_adaptor) }
-    ActiveGraph::Base.driver = Neo4j::Driver::GraphDatabase.driver(
-      'bolt://10.99.111.86:7687',
-      Neo4j::Driver::AuthTokens.basic('neo4j', 'password'),
-      encryption: false
-    )
 
     #ActiveGraph::Base.driver = Neo4j::Driver::GraphDatabase.driver('neo4j://10.99.111.86:7474')
   end
@@ -216,5 +211,19 @@ RSpec.configure do |config|
     #Neo4j::Transaction.run do
     #  Neo4j.threadlocal_ref_node = Neo4j::Node.new
     #end
+    Aod::Models::Hero.all.each do |hero|
+      hero.destroy
+    end
   end
+#  config.before(:each) do
+#    #TODO: figure out why this doesnt work
+#    #Neo4j::Transaction.run do
+#    #  Neo4j.threadlocal_ref_node = Neo4j::Node.new
+#    #end
+#
+#    #TODO: remove this hack
+#    Hero.all.each do |hero|
+#      hero.delete
+#    end
+#  end
 end

@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  neo4j:
+    errors:
+      models:
+        aod/models/hero:
+          attributes:
+            email:
+              taken: "Taken"

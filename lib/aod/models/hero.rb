@@ -74,6 +74,9 @@ module Aod
 
       #before_create :grant_initial_gold_voucher
 
+      validates :email, presence: true
+      validates_uniqueness_of :email
+
     #def converted_gold
     #  vouchers
     #end

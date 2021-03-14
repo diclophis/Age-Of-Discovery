@@ -31,6 +31,8 @@ gem 'markaby'
 gem 'rack'
 gem 'rake'
 
+gem 'i18n'
+
 #gem 'neo4j'
 #gem 'rails'
 

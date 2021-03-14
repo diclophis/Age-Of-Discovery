@@ -25,11 +25,19 @@
 #require 'active_graph/core'
 
 lib = File.expand_path("../../lib", __FILE__)
-puts [__FILE__, lib, File.absolute_path(lib)].inspect
-
 $LOAD_PATH.unshift(File.absolute_path(lib)) unless $LOAD_PATH.include?(File.absolute_path(lib))
 
 require 'aod'
+
+puts locales_glob = File.absolute_path(File.join('config', 'locales', '*.yml'))
+
+I18n.load_path << Dir[locales_glob]
+
+ActiveGraph::Base.driver = Neo4j::Driver::GraphDatabase.driver(
+  'bolt://10.99.111.86:7687',
+  Neo4j::Driver::AuthTokens.basic('neo4j', 'password'),
+  encryption: false
+)
 
 #module AgeOfDiscovery
 #  class Application < Rails::Application

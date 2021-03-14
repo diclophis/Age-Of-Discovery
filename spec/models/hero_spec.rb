@@ -34,10 +34,10 @@ describe Aod::Models::Hero do
 
   it "should have a unique email" do
     hero = valid_hero
-    hero.save!.should be_nil
+    hero.save!.should be_truthy
 
     hero_again = valid_hero
-    hero_again.valid?.should be_false
-    hero_again.save.should be_false
+    hero_again.valid?.should be_falsey
+    hero_again.save.should be_falsey
   end
 end
