@@ -15,7 +15,7 @@ module Aod
       #attr_accessible :email, :password, :password_confirmation, :remember_me
 
       property :username, :type =>   String
-      property :facebook_token, :type => String, :index => :exact
+      #property :facebook_token, :type => String, :index => :exact
 
       property :created_at, :type => Time
       property :updated_at, :type => Time
