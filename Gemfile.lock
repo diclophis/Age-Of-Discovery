@@ -65,6 +65,7 @@ PLATFORMS
 
 DEPENDENCIES
   activegraph (~> 10.0.0)
+  i18n
   markaby
   neo4j-ruby-driver
   rack
