@@ -23,9 +23,8 @@
 #require 'neo4j'
 #require 'active_graph/core'
 
-#lib = File.expand_path("../../lib", __FILE__)
-#$LOAD_PATH.unshift(File.absolute_path(lib)) unless $LOAD_PATH.include?(File.absolute_path(lib))
-
+lib = File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift(File.absolute_path(lib)) unless $LOAD_PATH.include?(File.absolute_path(lib))
 require 'aod'
 
 locales_glob = File.absolute_path(File.join('config', 'locales', '*.yml'))

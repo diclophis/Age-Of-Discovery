@@ -68,13 +68,14 @@ module Aod
 
       #has_n(:converted_gold).to(Voucher)
       has_many :in, :converted_gold, :type => :voucher, :model_class => "Aod::Models::Voucher"
+
       ##has_list :converted_gold
 
-      #has_one(:rank).to(Rank)
+      has_one :in, :rank, :type => :rank, :model_class => "Aod::Models::Rank"
 
-      #before_create :grant_initial_gold_voucher
+      before_create :grant_initial_gold_voucher
 
-      validates :email, presence: true
+      validates :email, { presence: true }
       validates_uniqueness_of :email
 
     #def converted_gold
@@ -84,7 +85,7 @@ module Aod
     private
 
       def grant_initial_gold_voucher
-        converted_gold << Voucher.new(:worth => 0)
+        converted_gold << Aod::Models::Voucher.new(:worth => 0)
       end
     end
   end

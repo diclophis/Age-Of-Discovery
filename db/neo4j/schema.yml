@@ -16,11 +16,12 @@
   ) ASSERT (`activegraph::migrations::schemamigration`.migration_id) IS UNIQUE
 - CONSTRAINT ON ( `aod::models::hero`:`Aod::Models::Hero` ) ASSERT (`aod::models::hero`.uuid)
   IS UNIQUE
+- CONSTRAINT ON ( `aod::models::rank`:`Aod::Models::Rank` ) ASSERT (`aod::models::rank`.uuid)
+  IS UNIQUE
 - CONSTRAINT ON ( `aod::models::voucher`:`Aod::Models::Voucher` ) ASSERT (`aod::models::voucher`.uuid)
   IS UNIQUE
-:indexes:
-- INDEX FOR (n:Aod::Models::Hero) ON (n.facebook_token)
+:indexes: []
 :versions:
-- '20210314210223'
-- '20210314210227'
-- '20210314210230'
+- '20210314212515'
+- '20210314212516'
+- '20210314212518'

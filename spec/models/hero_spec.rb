@@ -13,13 +13,15 @@ describe Aod::Models::Hero do
     hero = valid_hero
     expect(hero.save!).to be_truthy
 
+
     expect(hero.username).to eq("foo")
 
-    #hero.fame.should == 0
-    #hero.converted_gold.length == 1
+    expect(hero.fame).to eq(0)
 
-    #hero.converted_gold << Voucher.new(:worth => 10)
-    #hero.converted_gold.sum(:worth).should == 10
+    expect(hero.converted_gold.length).to eq(1)
+
+    hero.converted_gold << Aod::Models::Voucher.new(:worth => 10)
+    expect(hero.converted_gold.sum(&:worth)).to eq(10)
 
     #p hero.converted_gold.methods
     #p hero.converted_gold.sum(:worth)
@@ -28,17 +30,17 @@ describe Aod::Models::Hero do
   end
 
   it "should have a rank" do
-    #hero = valid_hero
-    #hero.rank = Rank.new
-    #hero.save!.should be_nil
+    hero = valid_hero
+    hero.rank = Aod::Models::Rank.new
+    expect(hero.save!).to be_truthy
   end
 
   it "should have a unique email" do
-    #hero = valid_hero
-    #hero.save!.should be_truthy
+    hero = valid_hero
+    expect(hero.save!).to be_truthy
 
-    #hero_again = valid_hero
-    #hero_again.valid?.should be_falsey
-    #hero_again.save.should be_falsey
+    hero_again = valid_hero
+    expect(hero_again.valid?).to be_falsey
+    expect(hero_again.save).to be_falsey
   end
 end
