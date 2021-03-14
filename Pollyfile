@@ -60,16 +60,16 @@
   ##TODO: this is hacked
   #run %q{ln -sfv /home/app/polly/bin/polly /usr/local/bin/polly}
 
-  run %q{bundle config set --local path /home/app/vendor/bundle}
-  run %q{bundle config set --local jobs 4}
-  run %q{bundle config set --local retry 3}
+  run %q{bundle config set --global path /home/app/vendor/bundle}
+  run %q{bundle config set --global jobs 4}
+  run %q{bundle config set --global retry 3}
   #run %q{bundle config set --local deploment true}
   #run %q{bundle config set --local without development}
   run %q{bundle install}
 
-  command("COPY") {
-    "--chown=app . /home/app/current"
-  }
+  #command("COPY") {
+  #  "--chown=app . /home/app/current"
+  #}
 }
 
 #@test = image {
