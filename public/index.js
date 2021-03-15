@@ -1,6 +1,15 @@
 /* */
 
+var pollTimeout = 1000;
+
 console.log("JS-RELOADED");
+
+var mergeAttrs = function(target, source) {
+  source.getAttributeNames().forEach(name => {
+    let value = source.getAttribute(name)
+    target.setAttribute(name, value)
+  })
+};
 
 var clearProgress = function() {
   var foundProgressContainer = document.getElementById("progress");
@@ -30,14 +39,17 @@ var keepTimeout = function(dashboardContainer) {
 
   window.morphdomTimeout = setTimeout(() => {
     refreshIndex(dashboardContainer);
-  }, 1000);
+  }, pollTimeout);
 };
 
 var refreshIndex = function(dashboardContainer) {
   var searchParams = new URLSearchParams(window.location.search);
 
+  searchParams.set("p", 1);
+
   //TODO: abstract data loader / router
-  fetch('?p=1' + '&max_r=' + (searchParams.get("max_r") || '')) // + '&c=' + (searchParams.get("c") || ''))
+  //'?p=1' + '&max_r=' + (searchParams.get("max_r") || '')) // + '&c=' + (searchParams.get("c") || ''))
+  fetch('?' + searchParams.toString())
   .then(response => {
     clearProgress();
 
@@ -46,13 +58,12 @@ var refreshIndex = function(dashboardContainer) {
   .then(dashboardHtml => {
     morphdom(dashboardContainer, dashboardHtml, {
       childrenOnly: true,
-      //onBeforeElUpdated: function(fromEl, toEl) {
-      //  if (fromEl.isEqualNode(toEl)) {
-      //    return false
-      //  }
-      //  return true
-      //},
       onNodeAdded: function (node) {
+        //if((node.nodeName === "INPUT") && node.type === "TEXT") {
+        //console.log("foo");
+        //  node.focus();
+        //}
+
         if (node.nodeName === 'SCRIPT') {
           var script = document.createElement('script');
           //copy over the attributes
@@ -63,18 +74,31 @@ var refreshIndex = function(dashboardContainer) {
         }
       },
       onBeforeElUpdated: function (fromEl, toEl) {
-        if (fromEl.nodeName === "SCRIPT" && toEl.nodeName === "SCRIPT") {
-          if (fromEl.id != toEl.id) { //TODO: maybe force JC reload??
-            var script = document.createElement('script');
-            //copy over the attributes
-            [...toEl.attributes].forEach( attr => { script.setAttribute(attr.nodeName ,attr.nodeValue) })
+        let focused = document.activeElement;
 
-            script.innerHTML = toEl.innerHTML;
-            fromEl.replaceWith(script)
-            return false;
-          }
+        if (fromEl.className === "focal" && (!!focused || fromEl == focused)) {
+          fromEl.focus();
         }
-        return true;
+
+          //if((fromEl.nodeName === "INPUT") && fromEl === focused) {
+          if((fromEl.nodeName === "INPUT")) { // && fromEl === focused) {
+            mergeAttrs(fromEl, toEl);
+            return false;
+          } else {
+            if (fromEl.nodeName === "SCRIPT" && toEl.nodeName === "SCRIPT") {
+              if (fromEl.id != toEl.id) { //TODO: maybe force JC reload??
+                var script = document.createElement('script');
+                //copy over the attributes
+                [...toEl.attributes].forEach( attr => { script.setAttribute(attr.nodeName ,attr.nodeValue) })
+
+                script.innerHTML = toEl.innerHTML;
+                fromEl.replaceWith(script)
+                return false;
+              }
+            }
+            return true;
+          }
+        //}
       }
     });
 
@@ -85,9 +109,9 @@ var refreshIndex = function(dashboardContainer) {
     indicateProgress();
     setTimeout(() => {
       refreshIndex(dashboardContainer);
-    }, 1000);
+    }, pollTimeout);
 
-    console.log('There has been a problem with your fetch operation: (' + e.message + ') -- reconnecting, please wait...');
+    console.log('There has been a problem with your fetch operation: (' + e.message + ') -- attempting reconnect now, please wait...');
   });
 };
 

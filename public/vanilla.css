@@ -1,5 +1,33 @@
 /* */
 
+body {
+  margin: 0em;
+  padding: 0em;
+
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScgLz4KICA8cmVjdCB4PScwJyB5PScwJyB3aWR0aD0nMScgaGVpZ2h0PScxJyBmaWxsPSdibGFjaycgLz4KPC9zdmc+"); background-repeat: repeat;
+
+  font-family: 'cinzel';
+}
+
+em#version {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.25em;
+	background: cyan;
+}
+
+div#welcome {
+
+  background-image: url(/images/default-welcome.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+
+}
+
+
 div#progress {
 	display: flex;
 	justify-content: center;
@@ -14,4 +42,59 @@ div#progress {
 
 li:first-child {
   background-color: cyan;
+}
+
+div#container {
+/*
+	width: 100%;
+	height: 100%;
+  background-image: url(/images/default-welcome.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+*/
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	justify-content: center;
+	align-items: center;
+
+
+	justify-content: center;
+	align-items: center;
+}
+
+div#welcome-title {
+  margin-left: -21em;
+  margin-top: -17em;
+	background: rgba(255, 255, 255, 0.87);
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+div#welcome-title h3 {
+}
+
+div#welcome-title h1 {
+  font-variant: small-caps;
+  font-style: italic;
+}
+
+input[type=submit] {
+  cursor: pointer;
+
+  font-family: 'cinzel';
+  font-variant: small-caps;
+  font-style: italic;
+  font-size: larger;
+  font-weight: bold;
+
+  color: blue;
+  text-decoration: underline;
+
+  border: 0px;
+  background: rgba(0,0,0,0);
 }
