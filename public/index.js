@@ -116,7 +116,7 @@ var refreshIndex = function(dashboardContainer) {
 };
 
 var installMorphdom = function() {
-  var foundDc = document.getElementById("container")
+  var foundDc = document.getElementById("wkndr")
   refreshIndex(foundDc);
 };
 

@@ -1,5 +1,15 @@
 /* */
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  font-variant: small-caps;
+  text-decoration: none;
+}
+
 body {
   margin: 0em;
   padding: 0em;
@@ -11,6 +21,18 @@ body {
   font-family: 'cinzel';
 }
 
+div#container {
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	justify-content: center;
+	align-items: center;
+}
+
 em#version {
   position: absolute;
   right: 0;
@@ -20,11 +42,77 @@ em#version {
 }
 
 div#welcome {
+	display: flex;
+  width: 100%;
+  height: 100%;
 
   background-image: url(/images/default-welcome.png);
   background-position: center center;
   background-repeat: no-repeat;
 
+	justify-content: center;
+	align-items: center;
+}
+
+div#port {
+	display: flex;
+  width: 100%;
+  height: 100%;
+
+  background-image: url(/images/default-port.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+
+	justify-content: center;
+	align-items: center;
+}
+
+div#port-title {
+  opacity: 0.0;
+
+  border: 1px solid grey;
+  xbackground: radial-gradient(circle at center, rgba(255,255,255,1.0), rgba(255, 255, 255, 0.83));
+  background-color: white;
+
+  border-radius: 1em;
+  padding: 0.3em 2em 0.3em 2em;
+
+  margin-left: 33em;
+  margin-top: -21em;
+
+  xtransition: opacity 1s;
+}
+
+/*
+div#port-title:hover {
+  opacity: 1.0;
+}
+*/
+
+
+div#blackjack {
+	display: flex;
+  width: 100%;
+  height: 100%;
+
+  background-image: url(/images/default-blackjack.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+
+	justify-content: center;
+	align-items: center;
+}
+
+div#blackjack-title {
+  border: 1px solid grey;
+  xbackground: radial-gradient(circle at center, rgba(255,255,255,1.0), rgba(255, 255, 255, 0.83));
+  background-color: white;
+
+  border-radius: 1em;
+  padding: 0.3em 2em 0.3em 2em;
+
+  margin-left: 33em;
+  margin-top: -21em;
 }
 
 
@@ -44,24 +132,13 @@ li:first-child {
   background-color: cyan;
 }
 
-div#container {
-/*
-	width: 100%;
-	height: 100%;
-  background-image: url(/images/default-welcome.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-*/
+div#wkndr {
 	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-
-	justify-content: center;
-	align-items: center;
-
 
 	justify-content: center;
 	align-items: center;
@@ -93,7 +170,7 @@ input[type=submit] {
   font-weight: bold;
 
   color: blue;
-  text-decoration: underline;
+  xtext-decoration: underline;
 
   border: 0px;
   background: rgba(0,0,0,0);

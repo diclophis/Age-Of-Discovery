@@ -41,7 +41,7 @@ module Aod
                 Aod::Views.factory(mab, inner_params, inner_cookies)
 
                 mab.a("href" => "/logout") {
-                  mab.em("id" => "version") { $APPLICATION_UUID }
+                  mab.em(($APPLICATION_UUID + " -- #{inner_cookies["name"]}"), "id" => "version")
                 }
               end
             end
@@ -55,7 +55,7 @@ module Aod
           mab.link("href" => "vanilla.css?#{$APPLICATION_UUID}", "rel" => "stylesheet", "type" => "text/css")
           mab.script("id" => "js-#{$APPLICATION_UUID}", "src" => "index.js?#{$APPLICATION_UUID}") {}
           mab.a("href" => "/logout") {
-            mab.em("id" => "version") { $APPLICATION_UUID }
+            mab.em(($APPLICATION_UUID + " -- #{inner_cookies["name"]}"), "id" => "version")
           }
         end
       end

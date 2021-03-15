@@ -8,8 +8,10 @@ module Aod
 
       card = params['c'] || (name ? 'port' : 'welcome')
 
-      ##max_r = [0, (params['max_r'] || 1).to_i].max
+      #TODO: validate params
+      #card = 'welcome' if name == nil && (card != 'set_sail' && card != 'set_sail')
 
+      #TODO: validate params
       case card
         when 'welcome'
           welcome(mab)
@@ -19,6 +21,21 @@ module Aod
 
         when 'port'
           port(mab, name)
+
+        when 'blackjack'
+          blackjack(mab, name)
+      end
+    end
+
+    def self.blackjack(mab, name) #TODO: hero object
+      mab.div(:id => "container") do
+        mab.div(:id => "blackjack") do
+          mab.div(:id => "blackjack-title") do
+            mab.a(:href => "?") do
+              mab.h2 "Back to Port"
+            end
+          end
+        end
       end
     end
 
@@ -26,8 +43,9 @@ module Aod
       mab.div(:id => "container") do
         mab.div(:id => "port") do
           mab.div(:id => "port-title") do
-            mab.h3 "Waiting for ..."
-            mab.em name
+            mab.a(:href => "?c=blackjack") do
+              mab.h2 "Ye Olde Inn"
+            end
           end
         end
       end
@@ -51,25 +69,13 @@ module Aod
       mab.div(:id => "container") do
         mab.div(:id => "welcome") do
           mab.div(:id => "welcome-title") do
-            #mab.h3 "Welcome To the ..."
-            #mab.a(:href => "?") do
-            #  mab.h1 "Age of Discovery"
-            #end
             mab.form("method" => "post") do
               mab.label { "Name:" }
               mab.span  { "&emsp;" }
               mab.input("name" => "name", "class" => "focal", "autofocus" => true)
 
-              #mab.a(:href => "?") do
-              #  mab.h1 "Set Sail!"
-              #end
-
               mab.input("type" => "submit", "value" => "Set Sail!")
             end
-
-            #mab.button do
-            #  mab.h1 "Set Sail!"
-            #end
           end
         end
       end
