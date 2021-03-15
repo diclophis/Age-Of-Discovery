@@ -1,6 +1,7 @@
 /* */
 
-var pollTimeout = 1000;
+var defaultPollTimeout = 1000;
+var pollTimeout = defaultPollTimeout;
 
 console.log("JS-RELOADED");
 
@@ -52,6 +53,7 @@ var refreshIndex = function(dashboardContainer) {
   fetch('?' + searchParams.toString())
   .then(response => {
     clearProgress();
+    pollTimeout = defaultPollTimeout;
 
     return response.text()
   })
@@ -105,13 +107,15 @@ var refreshIndex = function(dashboardContainer) {
     keepTimeout(dashboardContainer);
   })
   .catch(e => {
+    pollTimeout = pollTimeout * 1.5;
+
     resetTimeout();
     indicateProgress();
     setTimeout(() => {
       refreshIndex(dashboardContainer);
     }, pollTimeout);
 
-    console.log('There has been a problem with your fetch operation: (' + e.message + ') -- attempting reconnect now, please wait...');
+    console.log('There has been a problem with your fetch operation: (' + e.message + ') -- attempting reconnect in ' + pollTimeout + 'ms, please wait...');
   });
 };
 
