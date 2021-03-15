@@ -1,17 +1,6 @@
 /* */
 
-console.log("JS REINTERP");
-
-//var indicateProgress = function(element) {
-//  var progressIndicator = document.createElement("progress");
-//
-//  while (element.firstChild) {
-//    element.removeChild(element.firstChild);
-//  }
-//
-//  element.appendChild(progressIndicator);
-//  element.classList.add("progress");
-//};
+console.log("JS-RELOADED");
 
 var clearProgress = function() {
   var foundProgressContainer = document.getElementById("progress");
@@ -32,42 +21,29 @@ var indicateProgress = function() {
 
 var resetTimeout = function() {
   if (typeof(window.morphdomTimeout) != "undefined") {
-    //console.log("resetTimeout");
-
     clearTimeout(window.morphdomTimeout);
   }
 };
 
 var keepTimeout = function(dashboardContainer) {
-  //if (typeof(window.morphdomTimeout) != "undefined") {
-  //  console.log("clear");
-  //  clearTimeout(window.morphdomTimeout);
-  //}
-
   resetTimeout();
 
   window.morphdomTimeout = setTimeout(() => {
     refreshIndex(dashboardContainer);
   }, 1000);
-
-  //console.log("installedTimeout keptTimeout");
 };
 
 var refreshIndex = function(dashboardContainer) {
   var searchParams = new URLSearchParams(window.location.search);
 
   //TODO: abstract data loader / router
-  fetch('?p=1') // + '&pod=' + (searchParams.get("pod") || '') + '&c=' + (searchParams.get("c") || ''))
+  fetch('?p=1' + '&max_r=' + (searchParams.get("max_r") || '')) // + '&c=' + (searchParams.get("c") || ''))
   .then(response => {
     clearProgress();
 
     return response.text()
   })
   .then(dashboardHtml => {
-    console.log("refreshedIndex");
-
-    //dashboardContainer.classList.remove("progress");
-
     morphdom(dashboardContainer, dashboardHtml, {
       childrenOnly: true,
       //onBeforeElUpdated: function(fromEl, toEl) {
@@ -106,13 +82,12 @@ var refreshIndex = function(dashboardContainer) {
   })
   .catch(e => {
     resetTimeout();
-    console.log('There has been a problem with your fetch operation: ' + e.message);
     indicateProgress();
-    //keepTimeout(dashboardContainer);
-    ////setTimeout(refreshIndex, 1000);
     setTimeout(() => {
       refreshIndex(dashboardContainer);
     }, 1000);
+
+    console.log('There has been a problem with your fetch operation: (' + e.message + ') -- reconnecting, please wait...');
   });
 };
 
@@ -127,9 +102,6 @@ if (typeof(window.morphdomInstalled) === "undefined") {
     installMorphdom();
   });
   window.morphdomInstalled = true;
-  console.log(typeof(window.morphdomInstalled));
 } else {
-  console.log("js reloaded");
-
   installMorphdom();
 }

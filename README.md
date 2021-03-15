@@ -1,94 +1,4 @@
-# Status
-
-[![Build Status](https://travis-ci.org/diclophis/Age-Of-Discovery.png?branch=master)](https://travis-ci.org/diclophis/Age-Of-Discovery)
-
-# Research
-
-  * http://stackoverflow.com/questions/7976301/model-an-undirected-graph-in-rails
-  * http://tammersaleh.com/posts/acts_as_graph
-  * https://github.com/jbvillarante/acts_as_oqgraph
-  * https://github.com/stuart/acts_as_oqgraph_demo
-  * https://github.com/stuart/oqgraph_rails
-  * https://github.com/jdleesmiller/gratr
-  * https://devcenter.heroku.com/articles/neo4j
-  * http://www.slideshare.net/pablete/neo4j-for-ruby-and-rails
-  * https://github.com/andreasronge/neo4j/wiki/Neo4j%3A%3ARails-Introduction
-  * http://blog.neo4j.org/2010/02/top-10-ways-to-get-to-know-neo4j.html
-  * http://openquery.com/products/graph-engine
-  * https://github.com/tinkerpop/gremlin/wiki/Defining-a-Property-Graph
-  * https://github.com/tinkerpop/blueprints/wiki
-  * https://github.com/chippy65/Blackjack
-  * https://github.com/RubyRebbe/blackjack
-  * http://learnruby.com/examples/ruby-quiz-151.shtml
-  * http://blog.marquiswang.com/2009/01/06/ruby-blackjack/
-  * http://thinkingdigitally.com/archive/howto-use-ruby-poker/
-  * http://stackoverflow.com/questions/8292785/rails-heroku-multiplayer-game-poker
-  * https://github.com/tjarratt/RandomTextGen
-  * http://stackoverflow.com/questions/5896288/rails-3-and-graph-databases
-  * http://rubysource.com/using-a-graph-database-with-ruby-part-i-introduction/
-  * http://rubysource.com/using-a-graph-database-with-ruby-part-ii-integration/
-  * http://www.neotechnology.com/2012/07/i-know-kung-fu-or-using-neo4j-on-rails-without-jruby/
-  * http://stackoverflow.com/questions/11776481/document-oriented-or-graph-databases
-  * http://www.graph-database.org/
-  * http://carlhoerberg.github.com/blog/2012/03/29/run-jruby-on-heroku/
-  * http://stackoverflow.com/questions/2126122/jruby-gem-for-heroku
-  * http://domhackers.blogspot.com/2009/05/heroku-client-on-jruby-part-i.html
-  * https://help.ubuntu.com/community/CheckingYourUbuntuVersion
-  * http://wiki.debian.org/Ruby
-  * http://blog.jruby.org/2011/12/getting_started_with_jruby_and_java_7/
-  * https://github.com/jruby/heroku-buildpack-jruby
-  * http://cloud.dzone.com/articles/neo4j-heroku
-  * http://debian.neo4j.org/
-  * http://maxdemarzi.com/2012/01/13/neo4j-on-heroku-part-one/
-  * http://gephi.org/
-  * http://gephi.org/tag/neo4j/
-  * https://gephi.org/plugins/neo4j-graph-database-support/
-  * http://wiki.neo4j.org/content/Neoclipse_Guide
-  * http://wiki.neo4j.org/content/Visualization_options_for_graphs
-  * https://devcenter.heroku.com/articles/rails3
-  * http://maxdemarzi.com/
-  * http://maxdemarzi.com/2012/01/11/graph-visualization-and-neo4j/
-  * http://maxdemarzi.com/2012/02/13/visualizing-a-network-with-cypher/
-  * http://www.cheating.de/loes/snes/faq.snes.uncharted_waters.txt
-  * http://www.gamefaqs.com/nes/587747-uncharted-waters/faqs/45821
-  * http://maxdemarzi.com/2012/11/27/pathfinding-with-neo4j-unmanaged-extensions/#more-1591
-  * https://devcenter.heroku.com/changelog-items/192?utm_source=dlvr.it&utm_medium=twitter
-  * http://www.howtogeek.com/howto/linux/show-the-list-of-installed-packages-on-ubuntu-or-debian/
-  * sudo update-alternatives --install /usr/bin/llvm-ar llvm-ar /usr/bin/llvm-ar-3.0 50
-  * http://www.cyberciti.biz/howto/question/linux/dpkg-cheat-sheet.php
-  * http://ciphed.blogspot.com/
-  * http://blog.vivekprahlad.com/multitenancy-with-neo4jrb
-  * http://ruby.dzone.com/articles/six-degrees-kevin-bacon-using
-  * http://www.savvas.me/2011/10/neo4j-ruby/
-  * http://stackoverflow.com/questions/13938632/seemingly-naked-nodes-in-neo4j-rails
-  * https://github.com/benjackson/devise-neo4j-example
-  * https://github.com/plataformatec/devise
-  * https://github.com/andreasronge/neo4j/issues/135
-  * http://stackoverflow.com/questions/10872733/neo4j-rb-2-0-and-devise-2-0-is-there-any-way
-  * https://github.com/andreasronge/devise-neo4j
-  * http://stackoverflow.com/questions/8577254/neo4j-with-jruby-project-rails
-  * http://geekmonkey.org/articles/25-using-neo4j-with-rails-3-2
-  * http://neo4j.rubyforge.org/classes/Neo4j/Rails/Model.html
-  * http://stackoverflow.com/questions/12243360/neo4j-using-rails-on-heroku
-  * https://blogs.oracle.com/Jacobkessler/entry/four_guidelines_for_sizing_jruby
-  * http://stackoverflow.com/questions/104115/how-do-you-increase-the-maximum-heap-size-for-the-javac-process-in-borland-jbuil
-  * https://github.com/jruby/jruby/wiki/Troubleshooting-Memory-Use
-  * http://kenai.com/projects/jruby/pages/PerformanceTuning
-  * http://stackoverflow.com/questions/10397743/specifying-1-9-mode-with-jruby-and-rbenv
-  * http://ahalmeida.com/category/neo4j/
-  * http://blog.headius.com/2010/03/jruby-startup-time-tips.html
-  * https://github.com/jruby/jruby/wiki/Improving-startup-time
-  * http://neo4j.rubyforge.org/guides/configuration.html
-  * https://github.com/andreasronge/neo4j-wrapper/blob/master/spec/spec_helper.rb
-  * https://groups.google.com/forum/?fromgroups=#!topic/neo4jrb/TMxrIcyManM
-  * http://about.travis-ci.org/docs/user/languages/ruby/
-  * http://po-ru.com/diary/how-to-update-rubygems-to-a-specific-version/
-  * http://stackoverflow.com/questions/14206775/rails-emits-warning-rackfile-headers-parameter-replaces-cache-control-after
-  * http://procbits.com/2011/08/18/using-mongoid-with-rspec
-  * http://stackoverflow.com/questions/5150293/in-require-no-such-file-to-load-spec-helper
-  * http://stackoverflow.com/questions/5898308/how-to-safely-upgrade-an-amazon-ec2-instance-from-t1-micro-to-large
-
-# Models
+# Models / Basic Game Entities
 
         Hero
           has :name (string)
@@ -165,7 +75,6 @@
           off big time. Thanks to Alex Shovkoplyas for this great tip.
 
           Promotions are earned upon passing certain milestones and meeting total fame requirements. Requirements for promotion in each individual area are separate, but the required fame is dependent upon your current rank. 
-
 
 # Your Quest
 
@@ -340,22 +249,24 @@ Stock up on more food than water if you plan to search for a spring mid-journey.
 ## Guild Menu Flow
 
   1. Purchase
-       ->
-          ListOfItems
-            ->
-              PickItem
-                ->
-                  ConfirmPurchase
+
+         ->
+            ListOfItems
+              ->
+                PickItem
+                  ->
+                    ConfirmPurchase
 
   2. NationInformation
-       ->
-         NationList
-           ->
-             SelectNation
-               ->
-                 ConfirmPrice
-                   ->
-                     ListRevenueHostilityFriendshipsToOthersAndAlly
+
+         ->
+           NationList
+             ->
+               SelectNation
+                 ->
+                   ConfirmPrice
+                     ->
+                       ListRevenueHostilityFriendshipsToOthersAndAlly
 
 ## Ye Olde Inn Menu Flow
 
@@ -494,3 +405,104 @@ Buy->ListShipsWithLoadAndMax->SelectShip->ListItemsWithAmountAndCostShowTypesOfC
 
       Transfer...... Crew ............. Reassign crewmen to other vessels.
                      Cargo ............ Transfer any cargo between ships.
+
+# Status
+
+TODO: make polly ci build status link!
+
+# Example graph stuzz
+
+TODO: make compelling example case based on game dynamics
+
+```
+person.friends.favorite_beers.country_of_origin(:country).
+  order('count(country) DESC').
+    pluck(:country, count: 'count(country)')
+```
+
+# Research
+
+  * https://neo4jrb.readthedocs.io/en/stable/Introduction.html#activegraph
+  * http://stackoverflow.com/questions/7976301/model-an-undirected-graph-in-rails
+  * http://tammersaleh.com/posts/acts_as_graph
+  * https://github.com/jbvillarante/acts_as_oqgraph
+  * https://github.com/stuart/acts_as_oqgraph_demo
+  * https://github.com/stuart/oqgraph_rails
+  * https://github.com/jdleesmiller/gratr
+  * https://devcenter.heroku.com/articles/neo4j
+  * http://www.slideshare.net/pablete/neo4j-for-ruby-and-rails
+  * https://github.com/andreasronge/neo4j/wiki/Neo4j%3A%3ARails-Introduction
+  * http://blog.neo4j.org/2010/02/top-10-ways-to-get-to-know-neo4j.html
+  * http://openquery.com/products/graph-engine
+  * https://github.com/tinkerpop/gremlin/wiki/Defining-a-Property-Graph
+  * https://github.com/tinkerpop/blueprints/wiki
+  * https://github.com/chippy65/Blackjack
+  * https://github.com/RubyRebbe/blackjack
+  * http://learnruby.com/examples/ruby-quiz-151.shtml
+  * http://blog.marquiswang.com/2009/01/06/ruby-blackjack/
+  * http://thinkingdigitally.com/archive/howto-use-ruby-poker/
+  * http://stackoverflow.com/questions/8292785/rails-heroku-multiplayer-game-poker
+  * https://github.com/tjarratt/RandomTextGen
+  * http://stackoverflow.com/questions/5896288/rails-3-and-graph-databases
+  * http://rubysource.com/using-a-graph-database-with-ruby-part-i-introduction/
+  * http://rubysource.com/using-a-graph-database-with-ruby-part-ii-integration/
+  * http://www.neotechnology.com/2012/07/i-know-kung-fu-or-using-neo4j-on-rails-without-jruby/
+  * http://stackoverflow.com/questions/11776481/document-oriented-or-graph-databases
+  * http://www.graph-database.org/
+  * http://carlhoerberg.github.com/blog/2012/03/29/run-jruby-on-heroku/
+  * http://stackoverflow.com/questions/2126122/jruby-gem-for-heroku
+  * http://domhackers.blogspot.com/2009/05/heroku-client-on-jruby-part-i.html
+  * https://help.ubuntu.com/community/CheckingYourUbuntuVersion
+  * http://wiki.debian.org/Ruby
+  * http://blog.jruby.org/2011/12/getting_started_with_jruby_and_java_7/
+  * https://github.com/jruby/heroku-buildpack-jruby
+  * http://cloud.dzone.com/articles/neo4j-heroku
+  * http://debian.neo4j.org/
+  * http://maxdemarzi.com/2012/01/13/neo4j-on-heroku-part-one/
+  * http://gephi.org/
+  * http://gephi.org/tag/neo4j/
+  * https://gephi.org/plugins/neo4j-graph-database-support/
+  * http://wiki.neo4j.org/content/Neoclipse_Guide
+  * http://wiki.neo4j.org/content/Visualization_options_for_graphs
+  * https://devcenter.heroku.com/articles/rails3
+  * http://maxdemarzi.com/
+  * http://maxdemarzi.com/2012/01/11/graph-visualization-and-neo4j/
+  * http://maxdemarzi.com/2012/02/13/visualizing-a-network-with-cypher/
+  * http://www.cheating.de/loes/snes/faq.snes.uncharted_waters.txt
+  * http://www.gamefaqs.com/nes/587747-uncharted-waters/faqs/45821
+  * http://maxdemarzi.com/2012/11/27/pathfinding-with-neo4j-unmanaged-extensions/#more-1591
+  * https://devcenter.heroku.com/changelog-items/192?utm_source=dlvr.it&utm_medium=twitter
+  * http://www.howtogeek.com/howto/linux/show-the-list-of-installed-packages-on-ubuntu-or-debian/
+  * sudo update-alternatives --install /usr/bin/llvm-ar llvm-ar /usr/bin/llvm-ar-3.0 50
+  * http://www.cyberciti.biz/howto/question/linux/dpkg-cheat-sheet.php
+  * http://ciphed.blogspot.com/
+  * http://blog.vivekprahlad.com/multitenancy-with-neo4jrb
+  * http://ruby.dzone.com/articles/six-degrees-kevin-bacon-using
+  * http://www.savvas.me/2011/10/neo4j-ruby/
+  * http://stackoverflow.com/questions/13938632/seemingly-naked-nodes-in-neo4j-rails
+  * https://github.com/benjackson/devise-neo4j-example
+  * https://github.com/plataformatec/devise
+  * https://github.com/andreasronge/neo4j/issues/135
+  * http://stackoverflow.com/questions/10872733/neo4j-rb-2-0-and-devise-2-0-is-there-any-way
+  * https://github.com/andreasronge/devise-neo4j
+  * http://stackoverflow.com/questions/8577254/neo4j-with-jruby-project-rails
+  * http://geekmonkey.org/articles/25-using-neo4j-with-rails-3-2
+  * http://neo4j.rubyforge.org/classes/Neo4j/Rails/Model.html
+  * http://stackoverflow.com/questions/12243360/neo4j-using-rails-on-heroku
+  * https://blogs.oracle.com/Jacobkessler/entry/four_guidelines_for_sizing_jruby
+  * http://stackoverflow.com/questions/104115/how-do-you-increase-the-maximum-heap-size-for-the-javac-process-in-borland-jbuil
+  * https://github.com/jruby/jruby/wiki/Troubleshooting-Memory-Use
+  * http://kenai.com/projects/jruby/pages/PerformanceTuning
+  * http://stackoverflow.com/questions/10397743/specifying-1-9-mode-with-jruby-and-rbenv
+  * http://ahalmeida.com/category/neo4j/
+  * http://blog.headius.com/2010/03/jruby-startup-time-tips.html
+  * https://github.com/jruby/jruby/wiki/Improving-startup-time
+  * http://neo4j.rubyforge.org/guides/configuration.html
+  * https://github.com/andreasronge/neo4j-wrapper/blob/master/spec/spec_helper.rb
+  * https://groups.google.com/forum/?fromgroups=#!topic/neo4jrb/TMxrIcyManM
+  * http://about.travis-ci.org/docs/user/languages/ruby/
+  * http://po-ru.com/diary/how-to-update-rubygems-to-a-specific-version/
+  * http://stackoverflow.com/questions/14206775/rails-emits-warning-rackfile-headers-parameter-replaces-cache-control-after
+  * http://procbits.com/2011/08/18/using-mongoid-with-rspec
+  * http://stackoverflow.com/questions/5150293/in-require-no-such-file-to-load-spec-helper
+  * http://stackoverflow.com/questions/5898308/how-to-safely-upgrade-an-amazon-ec2-instance-from-t1-micro-to-large
