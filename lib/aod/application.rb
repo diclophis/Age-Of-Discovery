@@ -24,6 +24,9 @@ module Aod
               mab.li(i.to_s)
             }
           end
+
+          mab.link("href" => "vanilla.css?#{$APPLICATION_UUID}", "rel" => "stylesheet", "type" => "text/css")
+          mab.script("id" => "js-#{$APPLICATION_UUID}", "src" => "index.js?#{$APPLICATION_UUID}") {}
         end
       }
 
@@ -31,9 +34,7 @@ module Aod
         mabb.html5("lang" => "en") do
           mabb.head do
             mabb.title("aod")
-            mabb.link("href" => "vanilla.css", "rel" => "stylesheet", "type" => "text/css")
             mabb.script("src" => "morphdom-umd.js") {}
-            mabb.script("src" => "index.js") {}
           end
 
           mabb.body do

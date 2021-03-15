@@ -54,7 +54,7 @@
   }
 
   command("COPY") {
-    "--chown=app Gemfile Gemfile.lock /home/app/current/"
+    "--chown=app Gemfile /home/app/current/"
   }
 
   ##TODO: this is hacked

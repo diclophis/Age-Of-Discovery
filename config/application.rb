@@ -24,7 +24,6 @@ $LOAD_PATH.unshift(File.absolute_path(lib)) unless $LOAD_PATH.include?(File.abso
 require 'aod'
 
 require 'sinatra'
-require 'sinatra/reloader'
 require 'markaby'
 
 locales_glob = File.absolute_path(File.join('config', 'locales', '*.yml'))
@@ -36,6 +35,8 @@ ActiveGraph::Base.driver = Neo4j::Driver::GraphDatabase.driver(
   Neo4j::Driver::AuthTokens.basic('neo4j', 'password'),
   encryption: false
 )
+
+$APPLICATION_UUID = SecureRandom.hex
 
 #module AgeOfDiscovery
 #  class Application < Rails::Application
