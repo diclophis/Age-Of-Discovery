@@ -67,7 +67,7 @@ metadata:
     app.kubernetes.io/component: core
   annotations:
 spec:
-  type: ClusterIP
+  type: NodePort
 #{{- if (or (eq .Values.core.service.type "ClusterIP") (empty .Values.core.service.type)) }}
 #  type: ClusterIP
 #  clusterIP: None

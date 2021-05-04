@@ -13,10 +13,10 @@ locales_glob = File.absolute_path(File.join('config', 'locales', '*.yml'))
 
 I18n.load_path << Dir[locales_glob]
 
-ActiveGraph::Base.driver = Neo4j::Driver::GraphDatabase.driver(
-  ENV['NEO4J_AT'] || 'bolt://10.99.111.86:7687',
-  Neo4j::Driver::AuthTokens.basic('neo4j', 'password'),
-  encryption: false
-)
+#ActiveGraph::Base.driver = Neo4j::Driver::GraphDatabase.driver(
+#  ENV['NEO4J_AT'] || 'bolt://10.103.142.251:7687',
+#  Neo4j::Driver::AuthTokens.basic('neo4j', 'password'),
+#  encryption: false
+#)
 
 $APPLICATION_UUID = SecureRandom.hex

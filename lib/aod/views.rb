@@ -55,7 +55,9 @@ module Aod
       mab.div(:id => "container") do
         mab.div(:id => "welcome") do
           mab.div(:id => "welcome-title") do
-            mab.h3 "Welcome To the ..."
+            3.times {
+            mab.h3 "Welcome To farts ..."
+            }
 
             mab.a(:href => "?c=set_sail") do
               mab.h1 "Age of Discovery"
