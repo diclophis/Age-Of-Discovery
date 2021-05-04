@@ -7,8 +7,6 @@ public_urls =
   Dir.glob("public/images/*").collect { |img| "/images/" + File.basename(img) } +
   Dir.glob("public/fonts/*").collect { |font| "/fonts/" + File.basename(font) }
 
-puts public_urls
-
 use(
   Rack::Static, {
     :urls => public_urls,
@@ -16,8 +14,14 @@ use(
   }
 )
 
-app = run(Aod::Application)
+#@app = nil
+#
+#trap 'SIGTERM' do
+#  @app.quit! if @app
+#end
+#
+#trap 'SIGINT' do
+#  @app.quit! if @app
+#end
 
-trap 'TERM' do
-  app.quit!
-end
+@app = run(Aod::Application)

@@ -1,0 +1,90 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    app: age-of-discovery
+  name: age-of-discovery
+spec:
+  #progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: age-of-discovery
+  #strategy:
+  #  rollingUpdate:
+  #    maxSurge: 25%
+  #    maxUnavailable: 25%
+  #  type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: age-of-discovery
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - command:
+        - "bundle"
+        - "exec"
+        - "rackup"
+        - "-o"
+        - "0.0.0.0"
+        - "-p"
+        - "9292"
+        - "config.ru"
+        image: age-of-discovery:latest
+        imagePullPolicy: IfNotPresent
+        name: age-of-discovery
+        ports:
+        - containerPort: 9292
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 500m
+            memory: 100M
+          requests:
+            cpu: 200m
+            memory: 100M
+        #terminationMessagePath: /dev/termination-log
+        #terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+...
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  name: age-of-discovery-service
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: app
+    nodePort: 31147
+    port: 9292
+    protocol: TCP
+    targetPort: 9292
+  selector:
+    app: age-of-discovery
+  sessionAffinity: None
+  type: NodePort
+...
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.class: wkndr
+  name: age-of-discovery-computer-vhost
+spec:
+  rules:
+  - host: age-of-discovery.bardin.haus
+    http:
+      paths:
+      - backend:
+          serviceName: age-of-discovery-service
+          servicePort: 9292
