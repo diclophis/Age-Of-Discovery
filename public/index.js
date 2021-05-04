@@ -5,6 +5,13 @@ var pollTimeout = defaultPollTimeout;
 
 console.log("JS-RELOADED");
 
+var handleErrors = function(response) {
+  if (!response.ok) {
+      throw Error(response.statusText);
+  }
+  return response;
+}
+
 var mergeAttrs = function(target, source) {
   source.getAttributeNames().forEach(name => {
     let value = source.getAttribute(name)
@@ -51,6 +58,7 @@ var refreshIndex = function(dashboardContainer) {
   //TODO: abstract data loader / router
   //'?p=1' + '&max_r=' + (searchParams.get("max_r") || '')) // + '&c=' + (searchParams.get("c") || ''))
   fetch('?' + searchParams.toString())
+  .then(handleErrors)
   .then(response => {
     clearProgress();
     pollTimeout = defaultPollTimeout;

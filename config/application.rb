@@ -19,4 +19,10 @@ I18n.load_path << Dir[locales_glob]
 #  encryption: false
 #)
 
+ActiveGraph::Base.driver = Neo4j::Driver::GraphDatabase.driver(
+  ENV['NEO4J_AT'] || "bolt://#{ENV['NEO4J_FULLA_SERVICE_HOST']}:7687", #'bolt://10.99.111.86:7687',
+  Neo4j::Driver::AuthTokens.basic('neo4j', 'password'),
+  encryption: false
+)
+
 $APPLICATION_UUID = SecureRandom.hex

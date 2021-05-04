@@ -54,7 +54,11 @@
   #run %q{bundle config set --local without development}
   run %q{bundle install}
 
-  #command("COPY") {
-  #  "--chown=app . /home/app/current"
-  #}
+  command("COPY") {
+    "--chown=app . /home/app/current"
+  }
+
+  command("STOPSIGNAL") {
+    "SIGTERM"
+  }
 }

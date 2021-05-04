@@ -16,8 +16,6 @@ module Aod
     end
 
     get '/' do
-      puts params.inspect
-
       inner_params = params.dup
       inner_cookies = cookies.dup
 
