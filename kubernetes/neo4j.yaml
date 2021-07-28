@@ -191,6 +191,9 @@ spec:
         #readinessProbe:
         #livenessProbe:
         resources:
+          requests:
+            cpu: 10m
+            memory: 100M
       initContainers:
       securityContext:
       volumes:

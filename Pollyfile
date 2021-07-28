@@ -48,8 +48,8 @@
   }
 
   run %q{bundle config set --global path /home/app/vendor/bundle}
-  run %q{bundle config set --global jobs 4}
-  run %q{bundle config set --global retry 3}
+  run %q{bundle config set --global jobs 8}
+  run %q{bundle config set --global retry 6}
   #run %q{bundle config set --local deploment true}
   #run %q{bundle config set --local without development}
   run %q{bundle install}
